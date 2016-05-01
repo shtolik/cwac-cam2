@@ -316,52 +316,57 @@ abstract public class AbstractCameraActivity extends Activity {
   protected void init() {
     cameraFrag=(CameraFragment)getFragmentManager().findFragmentByTag(TAG_CAMERA);
 
+    boolean fragNeedsToBeAdded=false;
+
     if (cameraFrag==null) {
       cameraFrag=buildFragment();
+      fragNeedsToBeAdded=true;
+    }
 
-      FocusMode focusMode=
-        (FocusMode)getIntent().getSerializableExtra(EXTRA_FOCUS_MODE);
-      boolean allowChangeFlashMode=
-        getIntent().getBooleanExtra(EXTRA_ALLOW_SWITCH_FLASH_MODE, false);
-      ResultReceiver onError=
-        getIntent().getParcelableExtra(EXTRA_UNHANDLED_ERROR_RECEIVER);
+    FocusMode focusMode=
+      (FocusMode)getIntent().getSerializableExtra(EXTRA_FOCUS_MODE);
+    boolean allowChangeFlashMode=
+      getIntent().getBooleanExtra(EXTRA_ALLOW_SWITCH_FLASH_MODE, false);
+    ResultReceiver onError=
+      getIntent().getParcelableExtra(EXTRA_UNHANDLED_ERROR_RECEIVER);
 
-      CameraController ctrl=
-        new CameraController(focusMode, onError,
-          allowChangeFlashMode, isVideo());
+    CameraController ctrl=
+      new CameraController(focusMode, onError,
+        allowChangeFlashMode, isVideo());
 
-      cameraFrag.setController(ctrl);
-      cameraFrag
-        .setMirrorPreview(getIntent()
-          .getBooleanExtra(EXTRA_MIRROR_PREVIEW, false));
+    cameraFrag.setController(ctrl);
+    cameraFrag
+      .setMirrorPreview(getIntent()
+        .getBooleanExtra(EXTRA_MIRROR_PREVIEW, false));
 
-      Facing facing=
-        (Facing)getIntent().getSerializableExtra(EXTRA_FACING);
+    Facing facing=
+      (Facing)getIntent().getSerializableExtra(EXTRA_FACING);
 
-      if (facing==null) {
-        facing=Facing.BACK;
-      }
+    if (facing==null) {
+      facing=Facing.BACK;
+    }
 
-      boolean match=getIntent()
-        .getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false);
-      CameraSelectionCriteria criteria=
-        new CameraSelectionCriteria.Builder()
-          .facing(facing)
-          .facingExactMatch(match)
-          .build();
-      boolean forceClassic=
-        getIntent().getBooleanExtra(EXTRA_FORCE_CLASSIC, false);
+    boolean match=getIntent()
+      .getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false);
+    CameraSelectionCriteria criteria=
+      new CameraSelectionCriteria.Builder()
+        .facing(facing)
+        .facingExactMatch(match)
+        .build();
+    boolean forceClassic=
+      getIntent().getBooleanExtra(EXTRA_FORCE_CLASSIC, false);
 
-      if ("samsung".equals(Build.MANUFACTURER) &&
-          ("ha3gub".equals(Build.PRODUCT) ||
-          "k3gxx".equals(Build.PRODUCT))) {
-        forceClassic=true;
-      }
+    if ("samsung".equals(Build.MANUFACTURER) &&
+        ("ha3gub".equals(Build.PRODUCT) ||
+        "k3gxx".equals(Build.PRODUCT))) {
+      forceClassic=true;
+    }
 
-      ctrl.setEngine(CameraEngine.buildInstance(this, forceClassic), criteria);
-      ctrl.getEngine().setDebug(getIntent().getBooleanExtra(EXTRA_DEBUG_ENABLED, false));
-      configEngine(ctrl.getEngine());
+    ctrl.setEngine(CameraEngine.buildInstance(this, forceClassic), criteria);
+    ctrl.getEngine().setDebug(getIntent().getBooleanExtra(EXTRA_DEBUG_ENABLED, false));
+    configEngine(ctrl.getEngine());
 
+    if (fragNeedsToBeAdded) {
       getFragmentManager()
         .beginTransaction()
         .add(android.R.id.content, cameraFrag, TAG_CAMERA)
