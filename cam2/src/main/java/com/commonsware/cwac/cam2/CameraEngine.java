@@ -474,6 +474,13 @@ abstract public class CameraEngine {
       return(true);
     }
 
+    if ("LGE".equals(Build.MANUFACTURER) &&
+      Build.MODEL.equals("LGUS991")) {
+      return(true);
+    }
+
     return(false);
+
+    // return(true);
   }
 }
