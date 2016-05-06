@@ -410,7 +410,7 @@ abstract public class CameraEngine {
     this.pool=pool;
   }
 
-  void setPreferredFlashModes(List<FlashMode> flashModes) {
+  public void setPreferredFlashModes(List<FlashMode> flashModes) {
     preferredFlashModes=flashModes;
   }
 

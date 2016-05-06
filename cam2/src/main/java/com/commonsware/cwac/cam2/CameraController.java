@@ -242,7 +242,7 @@ public class CameraController implements CameraView.StateCallback {
     return(session.getCurrentFlashMode());
   }
 
-  boolean supportsZoom() {
+  public boolean supportsZoom() {
     return(engine.supportsZoom(session));
   }
 
@@ -252,7 +252,7 @@ public class CameraController implements CameraView.StateCallback {
     return(handleZoom());
   }
 
-  boolean setZoom(int zoomLevel) {
+  public boolean setZoom(int zoomLevel) {
     this.zoomLevel=zoomLevel;
 
     return(handleZoom());
@@ -405,7 +405,7 @@ public class CameraController implements CameraView.StateCallback {
     postError(ErrorConstants.ERROR_MISC, event.exception);
   }
 
-  void postError(int resultCode, Exception e) {
+  public void postError(int resultCode, Exception e) {
     if (onError!=null) {
       Bundle resultData=new Bundle();
       StringWriter sw=new StringWriter();
