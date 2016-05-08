@@ -416,9 +416,6 @@ public class CameraController implements CameraView.StateCallback {
           sw.toString());
       onError.send(resultCode, resultData);
     }
-    else {
-      android.util.Log.e("201604", "no onError");
-    }
   }
 
   /**
