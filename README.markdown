@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.5.9'
+    compile 'com.commonsware.cwac:cam2:0.5.10'
 }
 ```
 
@@ -110,7 +110,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.5.9 of this library, which means it is coming
+This is version v0.5.10 of this library, which means it is coming
 along slowly.
 
 Demo
@@ -162,6 +162,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.5.10: [LG G4](https://github.com/commonsguy/cwac-cam2/issues/195), [activity re-creation](https://github.com/commonsguy/cwac-cam2/issues/193) bugs fixed, plus [more graceful failure for a `camera2` issue](https://github.com/commonsguy/cwac-cam2/issues/192)  
 - v0.5.9: [handle config changes/process termination better](https://github.com/commonsguy/cwac-cam2/issues/190)
 - v0.5.8: better OOM handling, added `ResultReceiver` support for getting details of errors, bug fix in `confirmationQuality`
 - v0.5.7: improved [OnePlus X compatibility](https://github.com/commonsguy/cwac-cam2/issues/175), allow [configurable confirmation quality](https://github.com/commonsguy/cwac-cam2/issues/180), [block camera-change FAB in exact-match scenario](https://github.com/commonsguy/cwac-cam2/issues/182) 
