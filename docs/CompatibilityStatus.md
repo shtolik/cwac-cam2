@@ -21,6 +21,7 @@
 | Huawei Honor 5X                | `HUAWEI`/`KIW-L24`          | 5.1.1   | |
 | LG G2                          | `LGE`/`g2_open_com`         | 4.4.2   | |
 | LG G3                          | `LGE`/`g3_tmo_us`           | 5.0.1   | |
+| LG G4                          | `LGE`/`p1_usc_us`           | 6.0     |
 | LG G-Pad                       | `LGE`/`palman`              | 5.1     | |
 | Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
 | NVIDIA Shield K1               | `NVIDIA`/`sb_na_wf`         | 6.0     | |
