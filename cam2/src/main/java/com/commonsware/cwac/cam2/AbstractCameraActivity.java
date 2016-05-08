@@ -295,6 +295,11 @@ abstract public class AbstractCameraActivity extends Activity {
     finish();
   }
 
+  @SuppressWarnings("unused")
+  public void onEventMainThread(CameraEngine.DeepImpactEvent event) {
+    finish();
+  }
+
   protected Uri getOutputUri() {
     Uri output=null;
 
