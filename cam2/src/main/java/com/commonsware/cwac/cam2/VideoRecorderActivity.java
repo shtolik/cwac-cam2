@@ -62,7 +62,8 @@ public class VideoRecorderActivity extends AbstractCameraActivity {
         getIntent().getBooleanExtra(EXTRA_UPDATE_MEDIA_STORE, false),
         getIntent().getIntExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1),
         getIntent().getIntExtra(MediaStore.EXTRA_SIZE_LIMIT, 0),
-        getIntent().getIntExtra(MediaStore.EXTRA_DURATION_LIMIT, 0)));
+        getIntent().getIntExtra(MediaStore.EXTRA_DURATION_LIMIT, 0),
+        getIntent().getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false)));
   }
 
   @SuppressWarnings("unused")

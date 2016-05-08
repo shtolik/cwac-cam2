@@ -209,7 +209,8 @@ public class CameraActivity extends AbstractCameraActivity
     return(CameraFragment.newPictureInstance(getOutputUri(),
         getIntent().getBooleanExtra(EXTRA_UPDATE_MEDIA_STORE, false),
         getIntent().getIntExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1),
-        (ZoomStyle)getIntent().getSerializableExtra(EXTRA_ZOOM_STYLE)));
+        (ZoomStyle)getIntent().getSerializableExtra(EXTRA_ZOOM_STYLE),
+        getIntent().getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false)));
   }
 
   private void removeFragments() {

@@ -53,6 +53,7 @@ public class CameraFragment extends Fragment {
   private static final String ARG_SIZE_LIMIT="sizeLimit";
   private static final String ARG_DURATION_LIMIT="durationLimit";
   private static final String ARG_ZOOM_STYLE="zoomStyle";
+  private static final String ARG_FACING_EXACT_MATCH="facingExactMatch";
   private static final int PINCH_ZOOM_DELTA=20;
   private CameraController ctlr;
   private ViewGroup previewStack;
@@ -68,7 +69,8 @@ public class CameraFragment extends Fragment {
   public static CameraFragment newPictureInstance(Uri output,
                                                   boolean updateMediaStore,
                                                   int quality,
-                                                  ZoomStyle zoomStyle) {
+                                                  ZoomStyle zoomStyle,
+                                                  boolean facingExactMatch) {
     CameraFragment f=new CameraFragment();
     Bundle args=new Bundle();
 
@@ -77,6 +79,7 @@ public class CameraFragment extends Fragment {
     args.putInt(ARG_QUALITY, quality);
     args.putBoolean(ARG_IS_VIDEO, false);
     args.putSerializable(ARG_ZOOM_STYLE, zoomStyle);
+    args.putBoolean(ARG_FACING_EXACT_MATCH, facingExactMatch);
     f.setArguments(args);
 
     return(f);
@@ -85,7 +88,8 @@ public class CameraFragment extends Fragment {
   public static CameraFragment newVideoInstance(Uri output,
                                                 boolean updateMediaStore,
                                                 int quality, int sizeLimit,
-                                                int durationLimit) {
+                                                int durationLimit,
+                                                boolean facingExactMatch) {
     CameraFragment f=new CameraFragment();
     Bundle args=new Bundle();
 
@@ -95,6 +99,7 @@ public class CameraFragment extends Fragment {
     args.putInt(ARG_QUALITY, quality);
     args.putInt(ARG_SIZE_LIMIT, sizeLimit);
     args.putInt(ARG_DURATION_LIMIT, durationLimit);
+    args.putBoolean(ARG_FACING_EXACT_MATCH, facingExactMatch);
     f.setArguments(args);
 
     return(f);
@@ -110,8 +115,9 @@ public class CameraFragment extends Fragment {
     super.onCreate(savedInstanceState);
 
     setRetainInstance(true);
-    scaleDetector=new ScaleGestureDetector(getActivity(),
-      scaleListener);
+    scaleDetector=
+      new ScaleGestureDetector(getActivity().getApplicationContext(),
+        scaleListener);
   }
 
   /**
@@ -468,7 +474,7 @@ public class CameraFragment extends Fragment {
   }
 
   private boolean canSwitchSources() {
-    return(((AbstractCameraActivity)getActivity()).canSwitchSources());
+    return(!getArguments().getBoolean(ARG_FACING_EXACT_MATCH, false));
   }
 
   private boolean isVideo() {
