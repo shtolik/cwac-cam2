@@ -479,6 +479,11 @@ abstract public class CameraEngine {
       return(true);
     }
 
+    if ("LGE".equals(Build.MANUFACTURER) &&
+      Build.MODEL.equals("LG-H901")) {
+      return(true);
+    }
+
     return(false);
 
     // return(true);
