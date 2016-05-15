@@ -168,6 +168,9 @@ public class PictureFragment extends PreferenceFragment {
       case 3:
         b.flashMode(FlashMode.REDEYE);
         break;
+      case 4:
+        b.flashMode(FlashMode.TORCH);
+        break;
     }
 
     if (prefs.getBoolean("allowSwitchFlashMode", false)) {
