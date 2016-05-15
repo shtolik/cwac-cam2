@@ -143,6 +143,9 @@ public class PictureFragment extends PreferenceFragment {
       case 2:
         b.focusMode(FocusMode.EDOF);
         break;
+      case 3:
+        b.focusMode(FocusMode.MACRO);
+        break;
     }
 
     if (prefs.getBoolean("debugSavePreview", false)) {

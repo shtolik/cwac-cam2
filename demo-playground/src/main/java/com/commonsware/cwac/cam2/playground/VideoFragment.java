@@ -145,6 +145,9 @@ public class VideoFragment extends PreferenceFragment {
       case 2:
         b.focusMode(FocusMode.EDOF);
         break;
+      case 3:
+        b.focusMode(FocusMode.MACRO);
+        break;
     }
 
     b.onError(new ErrorResultReceiver());
