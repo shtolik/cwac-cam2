@@ -110,7 +110,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.5.10 of this library, which means it is coming
+This is version v0.5.11 of this library, which means it is coming
 along slowly.
 
 Demo
