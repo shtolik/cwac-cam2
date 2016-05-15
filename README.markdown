@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.5.10'
+    compile 'com.commonsware.cwac:cam2:0.5.11'
 }
 ```
 
@@ -162,6 +162,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.5.11: [LG V10 H901](https://github.com/commonsguy/cwac-cam2/issues/141) bug fix
 - v0.5.10: [LG G4](https://github.com/commonsguy/cwac-cam2/issues/195), [activity re-creation](https://github.com/commonsguy/cwac-cam2/issues/193) bugs fixed, plus [more graceful failure for a `camera2` issue](https://github.com/commonsguy/cwac-cam2/issues/192)  
 - v0.5.9: [handle config changes/process termination better](https://github.com/commonsguy/cwac-cam2/issues/190)
 - v0.5.8: better OOM handling, added `ResultReceiver` support for getting details of errors, bug fix in `confirmationQuality`
