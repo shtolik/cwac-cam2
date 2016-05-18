@@ -48,6 +48,8 @@ import de.greenrobot.event.EventBus;
 public class CameraFragment extends Fragment {
   private static final String ARG_OUTPUT="output";
   private static final String ARG_UPDATE_MEDIA_STORE="updateMediaStore";
+  private static final String ARG_SKIP_ORIENTATION_NORMALIZATION
+    ="skipOrientationNormalization";
   private static final String ARG_IS_VIDEO="isVideo";
   private static final String ARG_QUALITY="quality";
   private static final String ARG_SIZE_LIMIT="sizeLimit";
@@ -70,12 +72,15 @@ public class CameraFragment extends Fragment {
                                                   boolean updateMediaStore,
                                                   int quality,
                                                   ZoomStyle zoomStyle,
-                                                  boolean facingExactMatch) {
+                                                  boolean facingExactMatch,
+                                                  boolean skipOrientationNormalization) {
     CameraFragment f=new CameraFragment();
     Bundle args=new Bundle();
 
     args.putParcelable(ARG_OUTPUT, output);
     args.putBoolean(ARG_UPDATE_MEDIA_STORE, updateMediaStore);
+    args.putBoolean(ARG_SKIP_ORIENTATION_NORMALIZATION,
+      skipOrientationNormalization);
     args.putInt(ARG_QUALITY, quality);
     args.putBoolean(ARG_IS_VIDEO, false);
     args.putSerializable(ARG_ZOOM_STYLE, zoomStyle);
@@ -402,7 +407,8 @@ public class CameraFragment extends Fragment {
 
     if (output!=null) {
       b.toUri(getActivity(), output,
-          getArguments().getBoolean(ARG_UPDATE_MEDIA_STORE, false));
+          getArguments().getBoolean(ARG_UPDATE_MEDIA_STORE, false),
+          getArguments().getBoolean(ARG_SKIP_ORIENTATION_NORMALIZATION, false));
     }
 
     fabPicture.setEnabled(false);

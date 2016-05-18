@@ -152,6 +152,10 @@ public class PictureFragment extends PreferenceFragment {
       b.debugSavePreviewFrame();
     }
 
+    if (prefs.getBoolean("skipOrientationNormalization", false)) {
+      b.skipOrientationNormalization();
+    }
+
     int rawFlashMode=
       Integer.valueOf(prefs.getString("flashMode", "-1"));
 

@@ -26,5 +26,6 @@
 	<string name="title_allow_switch_flash_mode">Allow user to switch flash mode</string>
 	<string name="title_zoom_style">Zoom style</string>
 	<string name="title_confirmation_quality">Confirmation quality</string>
+	<string name="title_skip_orient_normal">Skip orientation normalization</string>
 
 </resources>

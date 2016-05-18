@@ -33,6 +33,9 @@
   <SwitchPreference
     android:key="mirrorPreview"
     android:title="@string/title_mirror_preview"/>
+  <SwitchPreference
+    android:key="skipOrientationNormalization"
+    android:title="@string/title_skip_orient_normal"/>
   <ListPreference
     android:key="focusMode"
     android:entries="@array/focusModes"

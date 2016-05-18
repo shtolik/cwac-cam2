@@ -68,6 +68,14 @@ public class CameraActivity extends AbstractCameraActivity
   public static final String EXTRA_CONFIRMATION_QUALITY=
     "cwac_cam2_confirmation_quality";
 
+  /**
+   * Extra name for boolean indicating if we should skip the
+   * default logic to rotate the image based on the EXIF orientation
+   * tag. Defaults to false (meaning: do the rotation if needed).
+   */
+  public static final String EXTRA_SKIP_ORIENTATION_NORMALIZATION=
+    "cwac_cam2_skip_orientation_normalization";
+
   private static final String TAG_CONFIRM=ConfirmationFragment.class.getCanonicalName();
   private static final String[] PERMS={Manifest.permission.CAMERA};
   private ConfirmationFragment confirmFrag;
@@ -89,7 +97,9 @@ public class CameraActivity extends AbstractCameraActivity
     needsThumbnail=(output==null);
 
     if (confirmFrag==null) {
-      confirmFrag=ConfirmationFragment.newInstance();
+      confirmFrag=
+        ConfirmationFragment
+          .newInstance(normalizeOrientation());
       getFragmentManager()
           .beginTransaction()
           .add(android.R.id.content, confirmFrag, TAG_CONFIRM)
@@ -146,7 +156,8 @@ public class CameraActivity extends AbstractCameraActivity
       if (needsThumbnail) {
         final Intent result=new Intent();
 
-        result.putExtra("data", imageContext.buildResultThumbnail());
+        result.putExtra("data",
+          imageContext.buildResultThumbnail(normalizeOrientation()));
 
         findViewById(android.R.id.content).post(new Runnable() {
           @Override
@@ -210,7 +221,8 @@ public class CameraActivity extends AbstractCameraActivity
         getIntent().getBooleanExtra(EXTRA_UPDATE_MEDIA_STORE, false),
         getIntent().getIntExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1),
         (ZoomStyle)getIntent().getSerializableExtra(EXTRA_ZOOM_STYLE),
-        getIntent().getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false)));
+        getIntent().getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false),
+        getIntent().getBooleanExtra(EXTRA_SKIP_ORIENTATION_NORMALIZATION, false)));
   }
 
   private void removeFragments() {
@@ -219,6 +231,13 @@ public class CameraActivity extends AbstractCameraActivity
         .remove(confirmFrag)
         .remove(cameraFrag)
         .commit();
+  }
+
+  private boolean normalizeOrientation() {
+    boolean result=!getIntent()
+      .getBooleanExtra(EXTRA_SKIP_ORIENTATION_NORMALIZATION, false);
+
+    return(result);
   }
 
   /**
@@ -252,6 +271,18 @@ public class CameraActivity extends AbstractCameraActivity
      */
     public IntentBuilder skipConfirm() {
       result.putExtra(EXTRA_CONFIRM, false);
+
+      return(this);
+    }
+
+    /**
+     * Call to skip examining the picture for the EXIF orientation
+     * tag and rotating the image if needed.
+     *
+     * @return the builder, for further configuration
+     */
+    public IntentBuilder skipOrientationNormalization() {
+      result.putExtra(EXTRA_SKIP_ORIENTATION_NORMALIZATION, true);
 
       return(this);
     }

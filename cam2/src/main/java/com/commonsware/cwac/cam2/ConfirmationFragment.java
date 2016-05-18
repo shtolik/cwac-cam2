@@ -28,6 +28,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 public class ConfirmationFragment extends Fragment {
+  private static final String ARG_NORMALIZE_ORIENTATION=
+    "normalizeOrientation";
   private Float quality;
 
   public interface Contract {
@@ -38,10 +40,11 @@ public class ConfirmationFragment extends Fragment {
   private ImageView iv;
   private ImageContext imageContext;
 
-  public static ConfirmationFragment newInstance() {
+  public static ConfirmationFragment newInstance(boolean normalizeOrientation) {
     ConfirmationFragment result=new ConfirmationFragment();
     Bundle args=new Bundle();
 
+    args.putBoolean(ARG_NORMALIZE_ORIENTATION, normalizeOrientation);
     result.setArguments(args);
 
     return(result);
@@ -141,6 +144,7 @@ public class ConfirmationFragment extends Fragment {
   }
 
   private void loadImage(Float quality) {
-    iv.setImageBitmap(imageContext.buildPreviewThumbnail(getActivity(), quality));
+    iv.setImageBitmap(imageContext.buildPreviewThumbnail(getActivity(),
+      quality, getArguments().getBoolean(ARG_NORMALIZE_ORIENTATION)));
   }
 }
