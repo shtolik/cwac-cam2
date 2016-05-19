@@ -47,6 +47,11 @@ abstract public class CameraEngine {
   protected ArrayList<FlashMode> eligibleFlashModes=
     new ArrayList<FlashMode>();
 
+  public enum ID {
+    CLASSIC,
+    CAMERA2
+  }
+
   private static class CrashableEvent {
     /**
      * The exception that was raised when trying to process
@@ -328,16 +333,26 @@ abstract public class CameraEngine {
    * API level.
    *
    * @param ctxt any Context will do
-   * @param forceClassic if true, always use ClassicCameraEngine
+   * @param forcedEngineId if not null, use this engine always
    * @return a new CameraEngine instance
    */
   synchronized public static CameraEngine buildInstance(Context ctxt,
-                                                        boolean forceClassic) {
-    CameraEngine result=null;
+                                                        ID forcedEngineId) {
+    CameraEngine result;
+    boolean useCameraTwo;
 
-    if (!forceClassic &&
-        Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP
-      && !isProblematicDeviceOnNewCameraApi()) {
+    if (forcedEngineId==ID.CLASSIC) {
+      useCameraTwo=false;
+    }
+    else if (forcedEngineId==ID.CAMERA2) {
+      useCameraTwo=true;
+    }
+    else {
+      useCameraTwo=Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP
+        && DeviceMatcher.supportsCameraTwo();
+    }
+
+    if (useCameraTwo) {
       if (singletonTwo==null) {
         singletonTwo=new CameraTwoEngine(ctxt);
       }
@@ -416,76 +431,5 @@ abstract public class CameraEngine {
 
   boolean hasMoreThanOneEligibleFlashMode() {
     return(eligibleFlashModes.size()>1);
-  }
-
-  private static boolean isProblematicDeviceOnNewCameraApi() {
-    if ("Huawei".equals(Build.MANUFACTURER) &&
-      "angler".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("LGE".equals(Build.MANUFACTURER) &&
-      "occam".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("Amazon".equals(Build.MANUFACTURER) &&
-      "full_ford".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("Amazon".equals(Build.MANUFACTURER) &&
-      "full_thebes".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("HTC".equals(Build.MANUFACTURER) &&
-      "m7_google".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("HTC".equals(Build.MANUFACTURER) &&
-      "hiaeuhl_00709".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("Wileyfox".equals(Build.MANUFACTURER) &&
-      "Swift".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("Sony".equals(Build.MANUFACTURER) &&
-      "C6603".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("Sony".equals(Build.MANUFACTURER) &&
-      "C6802".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("samsung".equals(Build.MANUFACTURER) &&
-      "zerofltexx".equals(Build.PRODUCT)) {
-      return(true);
-    }
-
-    if ("OnePlus".equals(Build.MANUFACTURER) &&
-      Build.MODEL.startsWith("ONE E100")) {
-      return(true);
-    }
-
-    if ("LGE".equals(Build.MANUFACTURER) &&
-      Build.MODEL.equals("LGUS991")) {
-      return(true);
-    }
-
-    if ("LGE".equals(Build.MANUFACTURER) &&
-      Build.MODEL.equals("LG-H901")) {
-      return(true);
-    }
-
-    return(false);
-
-    // return(true);
   }
 }

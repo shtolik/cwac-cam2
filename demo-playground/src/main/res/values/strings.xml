@@ -10,7 +10,7 @@
 	<string name="title_debug">Enable debug mode</string>
 	<string name="take_picture">Take picture</string>
 	<string name="title_update_media_store">Update MediaStore</string>
-	<string name="title_force_classic">Force classic API</string>
+	<string name="title_force_engine">Force specific engine</string>
 	<string name="title_video">Capture video</string>
 	<string name="title_quality">Use high quality</string>
 	<string name="title_duration">Set duration limit</string>

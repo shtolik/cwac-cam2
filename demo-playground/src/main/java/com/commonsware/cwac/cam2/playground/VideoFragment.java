@@ -112,9 +112,11 @@ public class VideoFragment extends PreferenceFragment {
       b.updateMediaStore();
     }
 
+/*
     if (prefs.getBoolean("forceClassic", false)) {
       b.forceClassic();
     }
+*/
 
     String durationLimit=prefs.getString("durationLimit", null);
 

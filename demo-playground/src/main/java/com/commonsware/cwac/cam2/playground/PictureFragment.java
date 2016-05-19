@@ -30,6 +30,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import com.commonsware.cwac.cam2.AbstractCameraActivity;
 import com.commonsware.cwac.cam2.CameraActivity;
+import com.commonsware.cwac.cam2.CameraEngine;
 import com.commonsware.cwac.cam2.Facing;
 import com.commonsware.cwac.cam2.FlashMode;
 import com.commonsware.cwac.cam2.FocusMode;
@@ -107,8 +108,16 @@ public class PictureFragment extends PreferenceFragment {
       b.updateMediaStore();
     }
 
-    if (prefs.getBoolean("forceClassic", false)) {
-      b.forceClassic();
+    int rawEngine=
+      Integer.valueOf(prefs.getString("forceEngine", "0"));
+
+    switch (rawEngine) {
+      case 1:
+        b.forceEngine(CameraEngine.ID.CLASSIC);
+        break;
+      case 2:
+        b.forceEngine(CameraEngine.ID.CAMERA2);
+        break;
     }
 
     if (prefs.getBoolean("file", false)) {

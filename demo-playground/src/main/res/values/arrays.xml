@@ -67,4 +67,14 @@
     <item>0.5</item>
     <item>1.0</item>
   </string-array>
+  <string-array name="engines">
+    <item>Default</item>
+    <item>Classic</item>
+    <item>Camera2</item>
+  </string-array>
+  <string-array name="engineValues">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
 </resources>
