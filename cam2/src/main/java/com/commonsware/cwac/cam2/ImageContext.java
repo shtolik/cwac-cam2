@@ -110,7 +110,7 @@ public class ImageContext {
 
             exif.writeExif(rotated, baos, 100);
 
-            return (baos.toByteArray());
+            return(baos.toByteArray());
           }
           catch (OutOfMemoryError e) {
             EventBus
