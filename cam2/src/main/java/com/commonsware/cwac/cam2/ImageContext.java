@@ -97,24 +97,32 @@ public class ImageContext {
         int orientation=getOrientation();
 
         if (needsNormalization(orientation)) {
-          Bitmap original=
-            BitmapFactory.decodeByteArray(jpegOriginal, 0,
-              jpegOriginal.length);
-          Bitmap rotated=rotateViaMatrix(original, orientation);
+          try {
+            Bitmap original=
+              BitmapFactory.decodeByteArray(jpegOriginal, 0,
+                jpegOriginal.length);
+            Bitmap rotated=rotateViaMatrix(original, orientation);
 
-          exif.setTagValue(ExifInterface.TAG_ORIENTATION, 1);
-          exif.removeCompressedThumbnail();
+            exif.setTagValue(ExifInterface.TAG_ORIENTATION, 1);
+            exif.removeCompressedThumbnail();
 
-          ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            ByteArrayOutputStream baos=new ByteArrayOutputStream();
 
-          exif.writeExif(rotated, baos, 100);
+            exif.writeExif(rotated, baos, 100);
 
-          return(baos.toByteArray());
+            return (baos.toByteArray());
+          }
+          catch (OutOfMemoryError e) {
+            EventBus
+              .getDefault()
+              .post(new CameraEngine.DeepImpactEvent(e));
+          }
         }
       }
       catch (Exception e) {
-        EventBus.getDefault().post(
-          new CameraEngine.DeepImpactEvent(e));
+        EventBus
+          .getDefault()
+          .post(new CameraEngine.DeepImpactEvent(e));
       }
     }
 

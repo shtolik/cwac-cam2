@@ -57,13 +57,13 @@ abstract public class CameraEngine {
      * The exception that was raised when trying to process
      * the request, or null if no such exception was raised.
      */
-    public final Exception exception;
+    public final Throwable exception;
 
     public CrashableEvent() {
       this(null);
     }
 
-    public CrashableEvent(Exception e) {
+    public CrashableEvent(Throwable e) {
       if (e!=null) {
         Log.e("CWAC-Cam2", "Exception in camera processing", e);
       }
@@ -138,7 +138,7 @@ abstract public class CameraEngine {
    * (e.g., JPEGWriter ran out of disk space)
    */
   public static class DeepImpactEvent extends CrashableEvent {
-    public DeepImpactEvent(Exception exception) {
+    public DeepImpactEvent(Throwable exception) {
       super(exception);
     }
   }
