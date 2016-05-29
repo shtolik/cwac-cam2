@@ -24,7 +24,7 @@ and what their behavior is:
 |:--------------------------:|:--------------------------------:|:-----------------------------------------:|---------|
 | `debug()`                  | `EXTRA_DEBUG_ENABLED`            | `boolean`                                 | Indicate if extra debugging information should be dumped to LogCat (default is `false`) |
 | `facing()`                 | `EXTRA_FACING`                   | `AbstractCameraActivity.Facing`           | Indicate the preferred camera to start with (`BACK` or `FRONT`, default is `BACK`) |
-| `forceClassic()`           | `EXTRA_FORCE_CLASSIC`            | `boolean`                                 | Indicate if the `Camera` API should be used on Android 5.0+ devices instead of `camera2` (default is `false`) |
+| `forceEngine()`            | `EXTRA_FORCE_ENGINE`             | `CameraEngine.ID`                         | Indicate a camera engine to use (`CLASSIC` or `CAMERA2`), default is determined by algorithm |
 | `skipConfirm()`            | `EXTRA_CONFIRM`                  | `boolean`                                 | Indicate if the user should be presented with a preview of the image and needs to accept it before proceeding (default is to show the confirmation screen) |
 | `to()`                     | `MediaStore.EXTRA_OUTPUT`        | `Uri` (though `to()` also accepts `File`) | Destination for picture to be written, where `null` means to return a thumbnail via the `data` extra (default is `null`) |
 | `updateMediaStore()`       | `EXTRA_UPDATE_MEDIA_STORE`       | `boolean`                                 | Indicate if `MediaStore` should be notified about newly-captured photo (default is `false`)|
@@ -36,6 +36,7 @@ and what their behavior is:
 | `quality()`                | `MediaStore.EXTRA_VIDEO_QUALITY` | `AbstractCameraActivity.Quality`          | Indicate the quality, either `Quality.LOW` or `Quality.HIGH` (default=high) |
 | `confirmationQuality()`    | `EXTRA_CONFIRMATION_QUALITY`     | `float` in the (0.0f, 1.0f] range         | The fraction of the app's heap limit that we should be willing to try to use to load the image for confirmation |
 | `onError()`                | `EXTRA_UNHANDLED_ERROR_RECEIVER` | `ResultReceiver`                          | Provide a IPC callback to be notified about errors inside Cam2 |
+| `skipOrientationNormalization()` | `EXTRA_SKIP_ORIENTATION_NORMALIZATION` | `boolean`                     | `true` if we should leave images alone, `false` if we should rotate them based on EXIF headers (default is `false`) |
 
 Note that if you are going to use `skipConfirm()`, you need to call
 that first on the `IntentBuilder` before any of the others.

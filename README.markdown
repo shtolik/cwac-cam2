@@ -25,7 +25,7 @@ this library will not be suitable for all use cases.
 
 The targeted use case is an app that might otherwise have relied upon
 `ACTION_IMAGE_CAPTURE`/`ACTION_VIDEO_CAPTURE`, but needs greater reliability and somewhat greater
-control (e.g., capture images directly to internal storage).
+control.
 
 If you are trying to write "a camera app" &mdash; an app whose primary job is
 to take pictures &mdash; this library may be unsuitable for you.
@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.5.11'
+    compile 'com.commonsware.cwac:cam2:0.6.0'
 }
 ```
 
@@ -75,6 +75,17 @@ the library-provided activities. In other words, do not have
 
 Upgrade Notes
 -------------
+If you are moving from 0.5.x to 0.6.0 or higher, please note that
+the default camera engine is now the one using `android.hardware.Camera`.
+The `forceClassic()` method is deprecated, replaced with
+`forceEngine()`, which takes a `CameraEngine.ID` enum value
+(either `CLASSIC` or `CAMERA2`).
+
+Also, if you are moving from 0.5.x to 0.6.0 or higher, please note
+that your photos will be rotated, if the EXIF headers say that they
+should be rotated, and if there is sufficient memory to rotate the
+photos. Call `skipOrientationNormalization()` to avoid this.
+
 If you are moving from 0.3.x or 0.4.x to 0.5.0 or higher, please
 note that `FocusMode` is no longer an inner `enum` of
 `AbstractCameraActivity`, but rather is a standalone Java file.
@@ -110,7 +121,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.5.11 of this library, which means it is coming
+This is version v0.6.0 of this library, which means it is coming
 along slowly.
 
 Demo
@@ -162,6 +173,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.6.0: [EXIF orientation normalization](https://github.com/commonsguy/cwac-cam2/issues/15), [whitelist for `camera2` usage](https://github.com/commonsguy/cwac-cam2/issues/186), [more focus modes](https://github.com/commonsguy/cwac-cam2/issues/150), and [torch flash mode](https://github.com/commonsguy/cwac-cam2/issues/187)
 - v0.5.11: [LG V10 H901](https://github.com/commonsguy/cwac-cam2/issues/141) bug fix
 - v0.5.10: [LG G4](https://github.com/commonsguy/cwac-cam2/issues/195), [activity re-creation](https://github.com/commonsguy/cwac-cam2/issues/193) bugs fixed, plus [more graceful failure for a `camera2` issue](https://github.com/commonsguy/cwac-cam2/issues/192)  
 - v0.5.9: [handle config changes/process termination better](https://github.com/commonsguy/cwac-cam2/issues/190)
