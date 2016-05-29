@@ -27,8 +27,16 @@ public class DeviceMatcher {
 
   static {
     addToCameraTwoWhitelist(new Builder()
+      .manufacturer("Huawei")
+      .product("angler")
+      .build());
+    addToCameraTwoWhitelist(new Builder()
       .manufacturer("LGE")
       .product("hammerhead")
+      .build());
+    addToCameraTwoWhitelist(new Builder()
+      .manufacturer("LGE")
+      .product("occam")
       .build());
   }
 
