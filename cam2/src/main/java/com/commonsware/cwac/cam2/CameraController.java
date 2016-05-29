@@ -405,7 +405,7 @@ public class CameraController implements CameraView.StateCallback {
     postError(ErrorConstants.ERROR_MISC, event.exception);
   }
 
-  public void postError(int resultCode, Exception e) {
+  public void postError(int resultCode, Throwable e) {
     if (onError!=null) {
       Bundle resultData=new Bundle();
       StringWriter sw=new StringWriter();
