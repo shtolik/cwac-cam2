@@ -3,10 +3,12 @@
 ## Version 0.6.x
 | Device                         | Identifier                  | Version | Issues |
 | ------------------------------ |:---------------------------:|:-------:|--------|
+| Amazon Kindle Fire HD 6        | `Amazon`/`full_ariel`       | 4.4.4   | |
 | Google Galaxy Nexus            | `samsung`/`yakju`           | 4.3     | |
 | Google Nexus 4                 | `LGE`/`occam`               | 5.1.1   | |
 | Google Nexus 5                 | `LGE`/`hammerhead`          | 6.0.1   | |
 | Google Nexus 6P                | `Huawei`/`angler`           | 6.0.1   | |
+| Google Nexus S                 | `samsung`/`soju`            | 4.1.2   | |
 | LG G4                          | `LGE`/`p1_usc_us`           | 6.0     | |
 | Samsung Galaxy S7 (G930FD)     | `samsung`/`heroltexx`       | 6.0.1   | |
 
