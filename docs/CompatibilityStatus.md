@@ -3,13 +3,17 @@
 ## Version 0.6.x
 | Device                         | Identifier                  | Version | Issues |
 | ------------------------------ |:---------------------------:|:-------:|--------|
-| Amazon Kindle Fire HD 6        | `Amazon`/`full_ariel`       | 4.4.4   | |
+| Amazon Kindle Fire HD 6        | `Amazon`/`full_ariel`       | 5.1.1   | |
+| Amazon Fire Phone              | `Amazon`/`juniper`          | 4.4.4   | |
 | Google Galaxy Nexus            | `samsung`/`yakju`           | 4.3     | |
 | Google Nexus 4                 | `LGE`/`occam`               | 5.1.1   | |
 | Google Nexus 5                 | `LGE`/`hammerhead`          | 6.0.1   | |
 | Google Nexus 6P                | `Huawei`/`angler`           | 6.0.1   | |
 | Google Nexus S                 | `samsung`/`soju`            | 4.1.2   | |
+| HTC Incredible HD              | `HTC`/`htc_mecha`           | 4.0.4   | [32](https://github.com/commonsguy/cwac-cam2/issues/32) [33](https://github.com/commonsguy/cwac-cam2/issues/33) |
+| LG G2                          | `LGE`/`g2_open_com`         | 4.4.2   | |
 | LG G4                          | `LGE`/`p1_usc_us`           | 6.0     | |
+| Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
 | Samsung Galaxy S7 (G930FD)     | `samsung`/`heroltexx`       | 6.0.1   | |
 
 ## Version 0.5.x
