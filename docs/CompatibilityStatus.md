@@ -15,6 +15,8 @@
 | LG G4                          | `LGE`/`p1_usc_us`           | 6.0     | |
 | Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
 | Samsung Galaxy S7 (G930FD)     | `samsung`/`heroltexx`       | 6.0.1   | |
+| SONY Xperia E (C1505)          | `Sony`/`C1505`              | 4.1.1   | | [211](https://github.com/commonsguy/cwac-cam2/issues/211)
+| SONY Xperia S (LT26i)          | `Sony Ericsson`/`LT26i_1257-4921` | 4.1.2 | [97](https://github.com/commonsguy/cwac-cam2/issues/97) |
 
 ## Version 0.5.x
 | Device                         | Identifier                  | Version | Issues |
