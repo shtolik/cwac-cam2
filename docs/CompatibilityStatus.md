@@ -16,7 +16,9 @@
 | Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
 | Samsung Galaxy S7 (G930FD)     | `samsung`/`heroltexx`       | 6.0.1   | |
 | SONY Xperia E (C1505)          | `Sony`/`C1505`              | 4.1.1   | | [211](https://github.com/commonsguy/cwac-cam2/issues/211)
+| SONY Xperia E4 Dual (E2115)    | `Sony`/`E2115`              | 4.4.4   | |
 | SONY Xperia S (LT26i)          | `Sony Ericsson`/`LT26i_1257-4921` | 4.1.2 | [97](https://github.com/commonsguy/cwac-cam2/issues/97) |
+| Xiaomi Redmi                   | `Xiaomi`/`2014501`          | 4.4.2   | [35](https://github.com/commonsguy/cwac-cam2/issues/35) |
 
 ## Version 0.5.x
 | Device                         | Identifier                  | Version | Issues |
