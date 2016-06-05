@@ -25,18 +25,23 @@ public class DeviceMatcher {
   private final Pattern product;
   private final Pattern model;
 
+  /*
+    Blacklist:
+    Amazon: full_ford, full_thebes
+    asus: WW_Z00X
+    HTC: m7_google, hiaeuhl_00709
+    Huawei: angler
+    LGE: occam, Build.MODEL.equals("LG-H901"), Build.MODEL.equals("LGUS991")
+    OnePlus: Build.MODEL.startsWith("ONE E100")
+    samsung: zerofltexx
+    Sony: C6802, C6603
+    Wileyfox: Swift
+   */
+
   static {
-    addToCameraTwoWhitelist(new Builder()
-      .manufacturer("Huawei")
-      .product("angler")
-      .build());
     addToCameraTwoWhitelist(new Builder()
       .manufacturer("LGE")
       .product("hammerhead")
-      .build());
-    addToCameraTwoWhitelist(new Builder()
-      .manufacturer("LGE")
-      .product("occam")
       .build());
   }
 
