@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.6.0'
+    compile 'com.commonsware.cwac:cam2:0.6.1'
 }
 ```
 
@@ -121,7 +121,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.6.0 of this library, which means it is coming
+This is version v0.6.1 of this library, which means it is coming
 along slowly.
 
 Demo
@@ -173,6 +173,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.6.1: [Chronometer support](https://github.com/commonsguy/cwac-cam2/issues/220) and [config change bug fix](https://github.com/commonsguy/cwac-cam2/issues/219)
 - v0.6.0: [EXIF orientation normalization](https://github.com/commonsguy/cwac-cam2/issues/15), [whitelist for `camera2` usage](https://github.com/commonsguy/cwac-cam2/issues/186), [more focus modes](https://github.com/commonsguy/cwac-cam2/issues/150), and [torch flash mode](https://github.com/commonsguy/cwac-cam2/issues/187)
 - v0.5.11: [LG V10 H901](https://github.com/commonsguy/cwac-cam2/issues/141) bug fix
 - v0.5.10: [LG G4](https://github.com/commonsguy/cwac-cam2/issues/195), [activity re-creation](https://github.com/commonsguy/cwac-cam2/issues/193) bugs fixed, plus [more graceful failure for a `camera2` issue](https://github.com/commonsguy/cwac-cam2/issues/192)  
