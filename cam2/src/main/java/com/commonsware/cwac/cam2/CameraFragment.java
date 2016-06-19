@@ -309,8 +309,18 @@ public class CameraFragment extends Fragment {
    * @param ctlr the controller that this fragment delegates to
    */
   public void setController(CameraController ctlr) {
+    int currentCamera=-1;
+
+    if (this.ctlr!=null) {
+      currentCamera=this.ctlr.getCurrentCamera();
+    }
+
     this.ctlr=ctlr;
     ctlr.setQuality(getArguments().getInt(ARG_QUALITY, 1));
+
+    if (currentCamera>-1) {
+      ctlr.setCurrentCamera(currentCamera);
+    }
   }
 
   /**

@@ -246,6 +246,14 @@ public class CameraController implements CameraView.StateCallback {
     return(engine.supportsZoom(session));
   }
 
+  public int getCurrentCamera() {
+    return(currentCamera);
+  }
+
+  void setCurrentCamera(int currentCamera) {
+    this.currentCamera=currentCamera;
+  }
+
   boolean changeZoom(int delta) {
     zoomLevel+=delta;
 
