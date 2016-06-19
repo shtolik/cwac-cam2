@@ -3,12 +3,11 @@ apply plugin: 'com.android.library'
 dependencies {
     compile 'com.github.clans:fab:1.6.2'
     compile 'de.greenrobot:eventbus:2.4.0'
-    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         minSdkVersion 15
