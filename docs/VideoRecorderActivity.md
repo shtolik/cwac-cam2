@@ -33,6 +33,7 @@ and what their behavior is:
 | `mirrorPreview()`      | `EXTRA_MIRROR_PREVIEW`    | `boolean`                                 | Indicate if preview should be horizontally flipped (default is `false`)|
 | `focusMode()`          | `EXTRA_FOCUS_MODE`        | `AbstractCameraActivity.FocusMode`        | Indicate the desired focus mode for the camera (default is continuous if available, else device default) |
 | `onError()`            | `EXTRA_UNHANDLED_ERROR_RECEIVER` | `ResultReceiver`                   | Provide a IPC callback to be notified about errors inside Cam2 |
+| `chronoType()`         | `EXTRA_CHRONOTYPE`        | `ChronoType` | Whether there should be a timer shown on the video recording preview screen, and, if so, whether it counts down the remaining time on a time-limited recording or whether it counts up for how long the current recording is. |
 
 Note that `to()` is **required**.
 
