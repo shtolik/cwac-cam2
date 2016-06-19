@@ -11,12 +11,23 @@
 | Google Galaxy Nexus            | `samsung`/`yakju`           | 4.3     | |
 | Google Nexus 4                 | `LGE`/`occam`               | 5.1.1   | |
 | Google Nexus 5                 | `LGE`/`hammerhead`          | 6.0.1   | |
+| Google Nexus 5X                | `LGE`/`bullhead`            | 6.0.1   | |
 | Google Nexus 6P                | `Huawei`/`angler`           | 6.0.1   | |
+| Google Nexus 10                | `samsung`/`mantaray`        | 5.1.1   | |
 | Google Nexus S                 | `samsung`/`soju`            | 4.1.2   | |
 | HTC Incredible HD              | `HTC`/`htc_mecha`           | 4.0.4   | [32](https://github.com/commonsguy/cwac-cam2/issues/32) [33](https://github.com/commonsguy/cwac-cam2/issues/33) |
+| HTC One A9                     | `HTC`/`hiaeuhl_00709`       | 6.0.1   | |
+| HTC One M7 GPE                 | `HTC`/`m7_google`           | 5.1     | |
+| HTC One S                      | `HTC`/`tmous`               | 4.1.1   | [35](https://github.com/commonsguy/cwac-cam2/issues/35) |
+| Huawei Honor 5X                | `HUAWEI`/`KIW-L24`          | 5.1.1   | [215](https://github.com/commonsguy/cwac-cam2/issues/215) |
 | LG G2                          | `LGE`/`g2_open_com`         | 4.4.2   | |
+| LG G3                          | `LGE`/`g3_tmo_us`           | 6.0     | |
 | LG G4                          | `LGE`/`p1_usc_us`           | 6.0     | |
+| LG G-Pad                       | `LGE`/`palman`              | 5.1     | |
+| LG V10 H901                    | `LGE`/`pplus_tmo_us`        | 5.1.1   | |
 | Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
+| NVIDIA Shield K1               | `NVIDIA`/`sb_na_wf`         | 6.0.1   | |
+| OnePlus X (E1005)              | `OnePlus`/`MODEL`=`ONE E1005` | 5.1.1 | |
 | Samsung Galaxy S7 (G930FD)     | `samsung`/`heroltexx`       | 6.0.1   | |
 | SONY Xperia E (C1505)          | `Sony`/`C1505`              | 4.1.1   | | [211](https://github.com/commonsguy/cwac-cam2/issues/211)
 | SONY Xperia E4 Dual (E2115)    | `Sony`/`E2115`              | 4.4.4   | |

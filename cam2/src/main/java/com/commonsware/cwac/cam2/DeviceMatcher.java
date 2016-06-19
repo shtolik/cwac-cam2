@@ -40,8 +40,28 @@ public class DeviceMatcher {
 
   static {
     addToCameraTwoWhitelist(new Builder()
+      .manufacturer("HUAWEI")
+      .product("KIW-L24")
+      .build());
+    addToCameraTwoWhitelist(new Builder()
       .manufacturer("LGE")
       .product("hammerhead")
+      .build());
+    addToCameraTwoWhitelist(new Builder()
+      .manufacturer("LGE")
+      .product("bullhead")
+      .build());
+    addToCameraTwoWhitelist(new Builder()
+      .manufacturer("LGE")
+      .product("palman")
+      .build());
+    addToCameraTwoWhitelist(new Builder()
+      .manufacturer("NVIDIA")
+      .product("sb_na_wf")
+      .build());
+    addToCameraTwoWhitelist(new Builder()
+      .manufacturer("samsung")
+      .product("mantaray")
       .build());
   }
 
