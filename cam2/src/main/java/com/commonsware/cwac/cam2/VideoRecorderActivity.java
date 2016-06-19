@@ -1,5 +1,5 @@
 /***
- Copyright (c) 2015 CommonsWare, LLC
+ Copyright (c) 2015-2016 CommonsWare, LLC
 
  Licensed under the Apache License, Version 2.0 (the "License"); you may
  not use this file except in compliance with the License. You may obtain
@@ -26,6 +26,17 @@ import android.provider.MediaStore;
  * as does ACTION_VIDEO_CAPTURE.
  */
 public class VideoRecorderActivity extends AbstractCameraActivity {
+  /**
+   * Whether there should be a timer shown on the video recording
+   * preview screen, and, if so, whether it counts down the remaining
+   * time on a time-limited recording or whether it counts up for how
+   * long the current recording is. Value should be a ChronoType
+   * enum value (NONE, COUNT_DOWN, COUNT_UP). COUNT_DOWN will be
+   * ignored unless you also provide a duration limit.
+   */
+  public static final String EXTRA_CHRONOTYPE=
+    "cwac_cam2_chronotype";
+
   private static final String[] PERMS={
     Manifest.permission.CAMERA,
     Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -63,7 +74,8 @@ public class VideoRecorderActivity extends AbstractCameraActivity {
         getIntent().getIntExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1),
         getIntent().getIntExtra(MediaStore.EXTRA_SIZE_LIMIT, 0),
         getIntent().getIntExtra(MediaStore.EXTRA_DURATION_LIMIT, 0),
-        getIntent().getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false)));
+        getIntent().getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false),
+        (ChronoType)getIntent().getSerializableExtra(EXTRA_CHRONOTYPE)));
   }
 
   @SuppressWarnings("unused")
@@ -128,7 +140,7 @@ public class VideoRecorderActivity extends AbstractCameraActivity {
      * to EXTRA_SIZE_LIMIT.
      *
      * @param limit maximum video size in bytes
-     * @return
+     * @return the builder, for chaining
      */
     public IntentBuilder sizeLimit(int limit) {
       result.putExtra(MediaStore.EXTRA_SIZE_LIMIT, limit);
@@ -141,13 +153,28 @@ public class VideoRecorderActivity extends AbstractCameraActivity {
      * to EXTRA_DURATION_LIMIT.
      *
      * @param limit maximum video length in milliseconds
-     * @return
+     * @return the builder, for chaining
      */
     public IntentBuilder durationLimit(int limit) {
       result.putExtra(MediaStore.EXTRA_DURATION_LIMIT, limit);
 
       return(this);
     }
-  }
 
+    /**
+     * Whether there should be a timer shown on the video recording
+     * preview screen, and, if so, whether it counts down the remaining
+     * time on a time-limited recording or whether it counts up for how
+     * long the current recording is. COUNT_DOWN will be
+     * ignored unless you also provide a duration limit.
+     *
+     * @param type NONE, COUNT_DOWN, or COUNT_UP
+     * @return the builder, for chaining
+     */
+    public IntentBuilder chronoType(ChronoType type) {
+      result.putExtra(EXTRA_CHRONOTYPE, type);
+
+      return(this);
+    }
+  }
 }

@@ -33,6 +33,7 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import com.github.clans.fab.FloatingActionButton;
@@ -56,6 +57,7 @@ public class CameraFragment extends Fragment {
   private static final String ARG_DURATION_LIMIT="durationLimit";
   private static final String ARG_ZOOM_STYLE="zoomStyle";
   private static final String ARG_FACING_EXACT_MATCH="facingExactMatch";
+  private static final String ARG_CHRONOTYPE="chronotype";
   private static final int PINCH_ZOOM_DELTA=20;
   private CameraController ctlr;
   private ViewGroup previewStack;
@@ -67,6 +69,8 @@ public class CameraFragment extends Fragment {
   private ScaleGestureDetector scaleDetector;
   private boolean inSmoothPinchZoom=false;
   private SeekBar zoomSlider;
+  private Chronometer chronometer;
+  private ReverseChronometer reverseChronometer;
 
   public static CameraFragment newPictureInstance(Uri output,
                                                   boolean updateMediaStore,
@@ -94,7 +98,8 @@ public class CameraFragment extends Fragment {
                                                 boolean updateMediaStore,
                                                 int quality, int sizeLimit,
                                                 int durationLimit,
-                                                boolean facingExactMatch) {
+                                                boolean facingExactMatch,
+                                                ChronoType chronoType) {
     CameraFragment f=new CameraFragment();
     Bundle args=new Bundle();
 
@@ -105,6 +110,11 @@ public class CameraFragment extends Fragment {
     args.putInt(ARG_SIZE_LIMIT, sizeLimit);
     args.putInt(ARG_DURATION_LIMIT, durationLimit);
     args.putBoolean(ARG_FACING_EXACT_MATCH, facingExactMatch);
+
+    if (durationLimit>0 || chronoType!=ChronoType.COUNT_DOWN) {
+      args.putSerializable(ARG_CHRONOTYPE, chronoType);
+    }
+
     f.setArguments(args);
 
     return(f);
@@ -223,6 +233,8 @@ public class CameraFragment extends Fragment {
 
     if (isVideo()) {
       fabPicture.setImageResource(R.drawable.cwac_cam2_ic_videocam);
+      chronometer=(Chronometer)v.findViewById(R.id.chrono);
+      reverseChronometer=(ReverseChronometer)v.findViewById(R.id.rchrono);
     }
 
     fabPicture.setOnClickListener(new View.OnClickListener() {
@@ -441,6 +453,7 @@ public class CameraFragment extends Fragment {
         fabPicture.setColorPressedResId(
           R.color.cwac_cam2_recording_fab_pressed);
         fabSwitch.setEnabled(false);
+        configureChronometer();
       }
       catch (Exception e) {
         Log.e(getClass().getSimpleName(),
@@ -485,6 +498,41 @@ public class CameraFragment extends Fragment {
 
   private boolean isVideo() {
     return(getArguments().getBoolean(ARG_IS_VIDEO, false));
+  }
+
+  private ChronoType getChronoType() {
+    ChronoType chronoType=
+      (ChronoType)getArguments().getSerializable(ARG_CHRONOTYPE);
+
+    if (chronoType==null) {
+      chronoType=ChronoType.NONE;
+    }
+
+    return(chronoType);
+  }
+
+  private void configureChronometer() {
+    if (getChronoType()==ChronoType.COUNT_UP) {
+      chronometer.setVisibility(View.VISIBLE);
+      chronometer.start();
+    }
+    else if (getChronoType()==ChronoType.COUNT_DOWN) {
+      if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
+        chronometer.setVisibility(View.VISIBLE);
+        chronometer.setBase(SystemClock.elapsedRealtime()+
+          getArguments().getInt(ARG_DURATION_LIMIT, 0));
+        chronometer.setCountDown(true);
+        chronometer.start();
+      }
+      else {
+        reverseChronometer.setVisibility(View.VISIBLE);
+        reverseChronometer
+          .setOverallDuration(getArguments()
+            .getInt(ARG_DURATION_LIMIT, 0)/1000);
+        reverseChronometer.reset();
+        reverseChronometer.run();
+      }
+    }
   }
 
   private void prepController() {

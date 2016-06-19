@@ -29,6 +29,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 import com.commonsware.cwac.cam2.AbstractCameraActivity;
+import com.commonsware.cwac.cam2.ChronoType;
 import com.commonsware.cwac.cam2.Facing;
 import com.commonsware.cwac.cam2.FocusMode;
 import com.commonsware.cwac.cam2.VideoRecorderActivity;
@@ -149,6 +150,20 @@ public class VideoFragment extends PreferenceFragment {
         break;
       case 3:
         b.focusMode(FocusMode.MACRO);
+        break;
+    }
+
+    int rawChronoType=Integer.valueOf(prefs.getString("chronoType", "-1"));
+
+    switch (rawChronoType) {
+      case 0:
+        b.chronoType(ChronoType.NONE);
+        break;
+      case 1:
+        b.chronoType(ChronoType.COUNT_DOWN);
+        break;
+      case 2:
+        b.chronoType(ChronoType.COUNT_UP);
         break;
     }
 

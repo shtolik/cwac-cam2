@@ -77,4 +77,14 @@
     <item>1</item>
     <item>2</item>
   </string-array>
+  <string-array name="chronoTypes">
+    <item>None</item>
+    <item>Count Down</item>
+    <item>Count Up</item>
+  </string-array>
+  <string-array name="chronoValues">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
 </resources>
