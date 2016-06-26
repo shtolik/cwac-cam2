@@ -231,6 +231,11 @@ public class OrientationPlugin implements CameraPlugin {
         if (!isStillCapture && displayOrientation==90) {
           displayOrientation=270;
         }
+
+        if ("Huawei".equals(Build.MANUFACTURER) &&
+          "angler".equals(Build.PRODUCT) && displayOrientation==270) {
+          displayOrientation=90;
+        }
       }
       else {
         displayOrientation=(info.orientation - degrees + 360) % 360;
