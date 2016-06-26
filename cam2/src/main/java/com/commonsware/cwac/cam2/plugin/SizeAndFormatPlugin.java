@@ -142,6 +142,10 @@ public class SizeAndFormatPlugin implements CameraPlugin {
         "g3_tmo_us".equals(Build.PRODUCT)) {
         return(CamcorderProfile.QUALITY_480P);
       }
+      else if ("HUAWEI".equals(Build.MANUFACTURER) &&
+        "KIW-L24".equals(Build.PRODUCT)) {
+        return(CamcorderProfile.QUALITY_1080P);
+      }
 
       return(CamcorderProfile.QUALITY_HIGH);
     }
