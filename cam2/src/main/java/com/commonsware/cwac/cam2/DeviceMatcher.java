@@ -61,6 +61,10 @@ public class DeviceMatcher {
       .build());
     addToCameraTwoWhitelist(new Builder()
       .manufacturer("samsung")
+      .product("ha3gub")
+      .build());
+    addToCameraTwoWhitelist(new Builder()
+      .manufacturer("samsung")
       .product("mantaray")
       .build());
   }

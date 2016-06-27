@@ -28,6 +28,13 @@
 | Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
 | NVIDIA Shield K1               | `NVIDIA`/`sb_na_wf`         | 6.0.1   | |
 | OnePlus X (E1005)              | `OnePlus`/`MODEL`=`ONE E1005` | 5.1.1 | |
+| Samsung Galaxy Ace 3           | `samsung`/`loganub`         | 4.2.2   | |
+| Samsung Galaxy Camera EK-GC110 | `samsung`/`gd1wifiue`       | 4.1.2   | |
+| Samsung Galaxy Note 2 GT-N7100 | `samsung`/`t03gxx`          | 4.1.2   | |
+| Samsung Galaxy Note 3 SM-N900  | `samsung`/`ha3gub`          | 5.0   | |
+| Samsung Galaxy Pocket Neo      | `samsung`/`corsicadd`       | 4.1.2   | |
+| Samsung Galaxy S III           | `samsung`/`d2lterefreshspr` | 4.4.2 | |
+| Samsung Galaxy S4 Zoom         | `samsung`/`mprojectlteuc`   | 4.2.2   | |
 | Samsung Galaxy S7 (G930FD)     | `samsung`/`heroltexx`       | 6.0.1   | |
 | SONY Xperia E (C1505)          | `Sony`/`C1505`              | 4.1.1   | | [211](https://github.com/commonsguy/cwac-cam2/issues/211)
 | SONY Xperia E4 Dual (E2115)    | `Sony`/`E2115`              | 4.4.4   | |
