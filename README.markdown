@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.6.1'
+    compile 'com.commonsware.cwac:cam2:0.6.2'
 }
 ```
 
@@ -121,7 +121,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.6.1 of this library, which means it is coming
+This is version v0.6.2 of this library, which means it is coming
 along slowly.
 
 Demo
