@@ -73,7 +73,7 @@ a stack trace in a `String` value keyed by `ErrorConstants.RESULT_STACK_TRACE`.
 ```java
   Intent i=new CameraActivity.IntentBuilder(MainActivity.this)
       .skipConfirm()
-      .facing(CameraActivity.Facing.FRONT)
+      .facing(Facing.FRONT)
       .to(new File(testRoot, "portrait-front.jpg"))
       .debug()
       .zoomStyle(ZoomStyle.SEEKBAR)
