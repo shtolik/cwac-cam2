@@ -35,6 +35,7 @@
 | Samsung Galaxy Note 3 SM-N900  | `samsung`/`ha3gub`          | 5.0   | |
 | Samsung Galaxy Pocket Neo      | `samsung`/`corsicadd`       | 4.1.2   | |
 | Samsung Galaxy S III           | `samsung`/`d2lterefreshspr` | 4.4.2 | |
+| Samsung Galaxy S III           | `samsung`/`d2tmo`           | 4.3     | [149](https://github.com/commonsguy/cwac-cam2/issues/149) |
 | Samsung Galaxy S III           | `samsung`/`m0xx`            | 4.3     | [225](https://github.com/commonsguy/cwac-cam2/issues/225) |
 | Samsung Galaxy S4              | `samsung`/`jfltespr`        | 5.0.1   | |
 | Samsung Galaxy S4              | `samsung`/`jflteuc`         | 4.2.2   | |
