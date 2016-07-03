@@ -37,6 +37,7 @@ and what their behavior is:
 | `confirmationQuality()`    | `EXTRA_CONFIRMATION_QUALITY`     | `float` in the (0.0f, 1.0f] range         | The fraction of the app's heap limit that we should be willing to try to use to load the image for confirmation |
 | `onError()`                | `EXTRA_UNHANDLED_ERROR_RECEIVER` | `ResultReceiver`                          | Provide a IPC callback to be notified about errors inside Cam2 |
 | `skipOrientationNormalization()` | `EXTRA_SKIP_ORIENTATION_NORMALIZATION` | `boolean`                     | `true` if we should leave images alone, `false` if we should rotate them based on EXIF headers (default is `false`) |
+| `orientationLockMode()`    | `EXTRA_ORIENTATION_LOCK_MODE`    | `OrientationLockMode`                     | Locks the device orientation (`PORTRAIT` or `LANDSCAPE`) or allows for config changes (`DEFAULT`) |
 
 Note that if you are going to use `skipConfirm()`, you need to call
 that first on the `IntentBuilder` before any of the others.
