@@ -34,6 +34,7 @@ import com.commonsware.cwac.cam2.CameraEngine;
 import com.commonsware.cwac.cam2.Facing;
 import com.commonsware.cwac.cam2.FlashMode;
 import com.commonsware.cwac.cam2.FocusMode;
+import com.commonsware.cwac.cam2.OrientationLockMode;
 import com.commonsware.cwac.cam2.ZoomStyle;
 import java.io.File;
 
@@ -200,6 +201,18 @@ public class PictureFragment extends PreferenceFragment {
 
       case 2:
         b.zoomStyle(ZoomStyle.SEEKBAR);
+        break;
+    }
+
+    int rawOrientationLock=
+      Integer.valueOf(prefs.getString("olockMode", "0"));
+
+    switch (rawOrientationLock) {
+      case 1:
+        b.orientationLockMode(OrientationLockMode.PORTRAIT);
+        break;
+      case 2:
+        b.orientationLockMode(OrientationLockMode.LANDSCAPE);
         break;
     }
 

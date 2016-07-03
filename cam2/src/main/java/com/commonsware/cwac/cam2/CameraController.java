@@ -280,7 +280,7 @@ public class CameraController implements CameraView.StateCallback {
   private CameraView getPreview(CameraDescriptor camera) {
     CameraView result=previews.get(camera);
 
-    if (result==null) {
+    if (result==null && availablePreviews!=null) {
       result=availablePreviews.remove();
       previews.put(camera, result);
     }
@@ -366,21 +366,23 @@ public class CameraController implements CameraView.StateCallback {
       CameraDescriptor camera=cameras.get(currentCamera);
       CameraView cv=getPreview(camera);
 
-      boolean shouldSwapPreviewDimensions=
-        cv
-          .getContext()
-          .getResources()
-          .getConfiguration().orientation==
-          Configuration.ORIENTATION_PORTRAIT;
-      Size virtualPreviewSize=session.getPreviewSize();
+      if (cv!=null) {
+        boolean shouldSwapPreviewDimensions=
+          cv
+            .getContext()
+            .getResources()
+            .getConfiguration().orientation==
+            Configuration.ORIENTATION_PORTRAIT;
+        Size virtualPreviewSize=session.getPreviewSize();
 
-      if (shouldSwapPreviewDimensions) {
-        virtualPreviewSize=
-          new Size(session.getPreviewSize().getHeight(),
-            session.getPreviewSize().getWidth());
+        if (shouldSwapPreviewDimensions) {
+          virtualPreviewSize=
+            new Size(session.getPreviewSize().getHeight(),
+              session.getPreviewSize().getWidth());
+        }
+
+        cv.setPreviewSize(virtualPreviewSize);
       }
-
-      cv.setPreviewSize(virtualPreviewSize);
     }
   }
 

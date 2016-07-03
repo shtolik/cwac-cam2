@@ -39,6 +39,11 @@
     android:entries="@array/focusModes"
     android:entryValues="@array/focusModeValues"
     android:title="@string/title_focus_mode" />
+  <ListPreference
+    android:key="olockMode"
+    android:title="@string/title_olock"
+    android:entries="@array/olockTypes"
+    android:entryValues="@array/olockValues"/>
   <SwitchPreference
     android:key="useChooser"
     android:title="@string/title_use_chooser"/>

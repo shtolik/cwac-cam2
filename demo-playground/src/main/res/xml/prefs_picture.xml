@@ -54,6 +54,11 @@
     android:entries="@array/zoomStyles"
     android:entryValues="@array/zoomStyleValues"/>
   <ListPreference
+    android:key="olockMode"
+    android:title="@string/title_olock"
+    android:entries="@array/olockTypes"
+    android:entryValues="@array/olockValues"/>
+  <ListPreference
     android:key="confirmationQuality"
     android:title="@string/title_confirmation_quality"
     android:entries="@array/confirmationQuality"

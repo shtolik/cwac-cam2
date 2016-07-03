@@ -14,6 +14,7 @@
 
 package com.commonsware.cwac.cam2.util;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -68,6 +69,13 @@ public class Utils {
       }
       catch (PackageManager.NameNotFoundException e) {
         throw new IllegalStateException("Cannot find this activity!", e);
+      }
+    }
+
+    if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+      if (ctxt.checkSelfPermission(Manifest.permission.CAMERA)!=
+        PackageManager.PERMISSION_GRANTED) {
+        throw new IllegalStateException("We do not have the CAMERA permission");
       }
     }
   }

@@ -1,5 +1,5 @@
 /***
- Copyright (c) 2015 CommonsWare, LLC
+ Copyright (c) 2015-2016 CommonsWare, LLC
 
  Licensed under the Apache License, Version 2.0 (the "License"); you may
  not use this file except in compliance with the License. You may obtain
@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -124,11 +125,19 @@ abstract public class AbstractCameraActivity extends Activity {
 
   /**
    * Extra name for focus mode to apply. Value should be one of the
-   * AbstractCameraActivity.FocusMode enum values. Default is CONTINUOUS.
+   * FocusMode enum values. Default is CONTINUOUS.
    * If the desired focus mode is not available, the device default
    * focus mode is used.
    */
   public static final String EXTRA_FOCUS_MODE="cwac_cam2_focus_mode";
+
+  /**
+   * Extra name for orientation lock mode to apply. Value should be
+   * one of the OrientationLockMode values. Default, shockingly,
+   * is DEFAULT.
+   */
+  public static final String EXTRA_ORIENTATION_LOCK_MODE=
+    "cwac_cam2_olock_mode";
 
   /**
    * @return true if the activity wants FEATURE_ACTION_BAR_OVERLAY,
@@ -183,6 +192,11 @@ abstract public class AbstractCameraActivity extends Activity {
     super.onCreate(savedInstanceState);
 
     Utils.validateEnvironment(this);
+
+    OrientationLockMode olockMode=
+      (OrientationLockMode)getIntent().getSerializableExtra(EXTRA_ORIENTATION_LOCK_MODE);
+
+    lockOrientation(olockMode);
 
     if (needsOverlay()) {
       getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
@@ -383,6 +397,18 @@ abstract public class AbstractCameraActivity extends Activity {
 
   boolean canSwitchSources() {
     return(!getIntent().getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false));
+  }
+
+  protected void lockOrientation(OrientationLockMode mode) {
+    if (mode==null || mode==OrientationLockMode.DEFAULT) {
+      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+    }
+    else if (mode==OrientationLockMode.LANDSCAPE) {
+      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+    }
+    else {
+      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+    }
   }
 
   @TargetApi(23)
@@ -675,6 +701,19 @@ abstract public class AbstractCameraActivity extends Activity {
      */
     public T onError(ResultReceiver rr) {
       result.putExtra(EXTRA_UNHANDLED_ERROR_RECEIVER, rr);
+
+      return((T)this);
+    }
+
+    /**
+     * Specifies an OrientationLockMode to apply to the camera
+     * operation.
+     *
+     * @param mode an OrientationLockMode value
+     * @return the builder, for further configuration
+     */
+    public T orientationLockMode(OrientationLockMode mode) {
+      result.putExtra(EXTRA_ORIENTATION_LOCK_MODE, mode);
 
       return((T)this);
     }

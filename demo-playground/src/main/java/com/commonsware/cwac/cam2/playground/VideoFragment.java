@@ -32,6 +32,7 @@ import com.commonsware.cwac.cam2.AbstractCameraActivity;
 import com.commonsware.cwac.cam2.ChronoType;
 import com.commonsware.cwac.cam2.Facing;
 import com.commonsware.cwac.cam2.FocusMode;
+import com.commonsware.cwac.cam2.OrientationLockMode;
 import com.commonsware.cwac.cam2.VideoRecorderActivity;
 import java.io.File;
 
@@ -150,6 +151,18 @@ public class VideoFragment extends PreferenceFragment {
         break;
       case 3:
         b.focusMode(FocusMode.MACRO);
+        break;
+    }
+
+    int rawOrientationLock=
+      Integer.valueOf(prefs.getString("olockMode", "0"));
+
+    switch (rawOrientationLock) {
+      case 1:
+        b.orientationLockMode(OrientationLockMode.PORTRAIT);
+        break;
+      case 2:
+        b.orientationLockMode(OrientationLockMode.LANDSCAPE);
         break;
     }
 
