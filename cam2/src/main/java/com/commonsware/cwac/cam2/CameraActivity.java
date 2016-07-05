@@ -259,7 +259,7 @@ public class CameraActivity extends AbstractCameraActivity
     }
 
     @Override
-    Intent buildChooserBaseIntent() {
+    public Intent buildChooserBaseIntent() {
       return(new Intent(MediaStore.ACTION_IMAGE_CAPTURE));
     }
 

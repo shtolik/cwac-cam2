@@ -451,7 +451,7 @@ abstract public class AbstractCameraActivity extends Activity {
   }
 
   abstract public static class IntentBuilder<T extends IntentBuilder> {
-    abstract Intent buildChooserBaseIntent();
+    abstract public Intent buildChooserBaseIntent();
 
     protected final Intent result;
 

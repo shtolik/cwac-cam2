@@ -250,11 +250,11 @@ public class CameraController implements CameraView.StateCallback {
     return(currentCamera);
   }
 
-  void setCurrentCamera(int currentCamera) {
+  public void setCurrentCamera(int currentCamera) {
     this.currentCamera=currentCamera;
   }
 
-  boolean changeZoom(int delta) {
+  public boolean changeZoom(int delta) {
     zoomLevel+=delta;
 
     return(handleZoom());
