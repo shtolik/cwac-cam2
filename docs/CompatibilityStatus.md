@@ -49,6 +49,8 @@
 | SONY Xperia S (LT26i)          | `Sony Ericsson`/`LT26i_1257-4921` | 4.1.2 | [97](https://github.com/commonsguy/cwac-cam2/issues/97) |
 | SONY Xperia Z Ultra (C6802)    | `Sony`/`C6802`              | 5.1.1   | |
 | SONY Xperia Z3 Compact         | `Sony`/`D5803`              | 5.1.1   | [173](https://github.com/commonsguy/cwac-cam2/issues/173) |
+| Tesco (Pegatron) hudl 2        | `Pegatron`/`HTF8A4XX`       | 5.1     | [240](https://github.com/commonsguy/cwac-cam2/issues/240) |
+| Wileyfox Swift                 | `Wileyfox`/`Swift`          | 6.0.1 (CM 12.1) | |
 | Xiaomi Redmi                   | `Xiaomi`/`2014501`          | 4.4.2   | [35](https://github.com/commonsguy/cwac-cam2/issues/35) |
 
 ## Version 0.5.x
