@@ -77,29 +77,33 @@ public class ClassicCameraEngine extends CameraEngine
 
             Camera camera=Camera.open(descriptor.getCameraId());
             Camera.Parameters params=camera.getParameters();
-            ArrayList<Size> sizes=new ArrayList<Size>();
 
-            for (Camera.Size size : params.getSupportedPreviewSizes()) {
-              if (size.height<2160 && size.width<2160) {
-                sizes.add(new Size(size.width, size.height));
+            if (params!=null) {
+              ArrayList<Size> sizes=new ArrayList<Size>();
+
+              for (Camera.Size size : params.getSupportedPreviewSizes()) {
+                if (size.height<2160 && size.width<2160) {
+                  sizes.add(new Size(size.width, size.height));
+                }
               }
-            }
 
-            descriptor.setPreviewSizes(sizes);
+              descriptor.setPreviewSizes(sizes);
 
-            sizes=new ArrayList<Size>();
+              sizes=new ArrayList<Size>();
 
-            for (Camera.Size size : params.getSupportedPictureSizes()) {
-              if (!"samsung".equals(Build.MANUFACTURER) ||
+              for (Camera.Size size : params.getSupportedPictureSizes()) {
+                if (!"samsung".equals(Build.MANUFACTURER) ||
                   !"jflteuc".equals(Build.PRODUCT) ||
                   size.width<2048) {
-                sizes.add(new Size(size.width, size.height));
+                  sizes.add(new Size(size.width, size.height));
+                }
               }
+
+              descriptor.setPictureSizes(sizes);
+              result.add(descriptor);
             }
 
-            descriptor.setPictureSizes(sizes);
             camera.release();
-            result.add(descriptor);
           }
 
           descriptors=result;
