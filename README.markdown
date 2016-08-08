@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.6.4'
+    compile 'com.commonsware.cwac:cam2:0.6.5'
 }
 ```
 
@@ -121,7 +121,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.6.4 of this library, which means it is coming
+This is version v0.6.5 of this library, which means it is coming
 along slowly.
 
 Demo
@@ -173,6 +173,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.6.5: attempting a workaround for [some buggy devices](https://github.com/commonsguy/cwac-cam2/issues/246)
 - v0.6.4: [made some methods `public`](https://github.com/commonsguy/cwac-cam2/issues/236) 
 - v0.6.3: added `orientationLockMode()`, integrated pull requests for [library](https://github.com/commonsguy/cwac-cam2/pull/231) and [docs](https://github.com/commonsguy/cwac-cam2/pull/232)
 - v0.6.2: fixed [Nexus 6P](https://github.com/commonsguy/cwac-cam2/issues/222) and [Honor 5X](https://github.com/commonsguy/cwac-cam2/issues/215) bugs
