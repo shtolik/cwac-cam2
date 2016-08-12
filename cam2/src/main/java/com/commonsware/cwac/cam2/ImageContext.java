@@ -109,8 +109,9 @@ public class ImageContext {
             ByteArrayOutputStream baos=new ByteArrayOutputStream();
 
             exif.writeExif(rotated, baos, 100);
+            jpegOriginal=baos.toByteArray();
 
-            return(baos.toByteArray());
+            return(jpegOriginal);
           }
           catch (OutOfMemoryError e) {
             EventBus
