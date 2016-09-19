@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.6.6'
+    compile 'com.commonsware.cwac:cam2:0.6.7'
 }
 ```
 
@@ -121,7 +121,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.6.6 of this library, which means it is coming
+This is version v0.6.7 of this library, which means it is coming
 along slowly.
 
 Demo
@@ -173,6 +173,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.6.7: workaround for [Nexus 5X Android 7.0 bug](https://github.com/commonsguy/cwac-cam2/issues/184)
 - v0.6.6: [improved confirmation behavior for devices that need images rotated](https://github.com/commonsguy/cwac-cam2/issues/241)
 - v0.6.5: attempting a workaround for [some buggy devices](https://github.com/commonsguy/cwac-cam2/issues/246)
 - v0.6.4: [made some methods `public`](https://github.com/commonsguy/cwac-cam2/issues/236) 
