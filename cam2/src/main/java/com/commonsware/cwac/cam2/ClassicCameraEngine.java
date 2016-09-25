@@ -66,76 +66,90 @@ public class ClassicCameraEngine extends CameraEngine
     getThreadPool().execute(new Runnable() {
       @Override
       public void run() {
-        if (descriptors == null) {
-          int count=Camera.getNumberOfCameras();
-          List<Descriptor> result=new ArrayList<Descriptor>();
-          Camera.CameraInfo info=new Camera.CameraInfo();
+        try {
+          if (descriptors == null) {
+            int count=Camera.getNumberOfCameras();
+            List<Descriptor> result=new ArrayList<Descriptor>();
+            Camera.CameraInfo info=new Camera.CameraInfo();
 
-          for (int cameraId=0; cameraId < count; cameraId++) {
-            Camera.getCameraInfo(cameraId, info);
-            Descriptor descriptor=new Descriptor(cameraId, info);
+            for (int cameraId=0; cameraId<count; cameraId++) {
+              Camera.getCameraInfo(cameraId, info);
+              Descriptor descriptor=new Descriptor(cameraId, info);
 
-            Camera camera=Camera.open(descriptor.getCameraId());
-            Camera.Parameters params=camera.getParameters();
+              Camera camera=Camera.open(descriptor.getCameraId());
+              Camera.Parameters params=camera.getParameters();
 
-            if (params!=null) {
-              ArrayList<Size> sizes=new ArrayList<Size>();
+              if (params!=null) {
+                ArrayList<Size> sizes=new ArrayList<Size>();
 
-              for (Camera.Size size : params.getSupportedPreviewSizes()) {
-                if (size.height<2160 && size.width<2160) {
-                  sizes.add(new Size(size.width, size.height));
+                for (Camera.Size size : params.getSupportedPreviewSizes()) {
+                  if (size.height<2160 && size.width<2160) {
+                    sizes.add(new Size(size.width, size.height));
+                  }
                 }
+
+                descriptor.setPreviewSizes(sizes);
+
+                sizes=new ArrayList<Size>();
+
+                for (Camera.Size size : params.getSupportedPictureSizes()) {
+                  if (!"samsung".equals(Build.MANUFACTURER) ||
+                    !"jflteuc".equals(Build.PRODUCT) ||
+                    size.width<2048) {
+                    sizes.add(new Size(size.width, size.height));
+                  }
+                }
+
+                descriptor.setPictureSizes(sizes);
+                result.add(descriptor);
               }
 
-              descriptor.setPreviewSizes(sizes);
-
-              sizes=new ArrayList<Size>();
-
-              for (Camera.Size size : params.getSupportedPictureSizes()) {
-                if (!"samsung".equals(Build.MANUFACTURER) ||
-                  !"jflteuc".equals(Build.PRODUCT) ||
-                  size.width<2048) {
-                  sizes.add(new Size(size.width, size.height));
-                }
-              }
-
-              descriptor.setPictureSizes(sizes);
-              result.add(descriptor);
+              camera.release();
             }
 
-            camera.release();
+            descriptors=result;
           }
 
-          descriptors=result;
+          List<CameraDescriptor> result=
+            new ArrayList<CameraDescriptor>();
+
+          for (Descriptor descriptor : descriptors) {
+            if (!criteria.getFacingExactMatch() ||
+              descriptor.getScore(criteria)>0) {
+              result.add(descriptor);
+            }
+          }
+
+          Collections.sort(result,
+            new Comparator<CameraDescriptor>() {
+              @Override
+              public int compare(CameraDescriptor descriptor,
+                                 CameraDescriptor t1) {
+                Descriptor lhs=(Descriptor)descriptor;
+                Descriptor rhs=(Descriptor)t1;
+
+                // descending, so invert normal side-ness
+
+                int lhScore=rhs.getScore(criteria);
+                int rhScore=lhs.getScore(criteria);
+
+                // from Integer.compare(), which is new to API Level 19
+
+                return (lhScore<rhScore ? -1 :
+                  (lhScore==rhScore ? 0 : 1));
+              }
+            });
+
+          getBus().post(
+            new CameraEngine.CameraDescriptorsEvent(result));
         }
+        catch (Exception e) {
+          getBus().post(new DeepImpactEvent(e));
 
-        List<CameraDescriptor> result=new ArrayList<CameraDescriptor>();
-
-        for (Descriptor descriptor : descriptors) {
-          if (!criteria.getFacingExactMatch() ||
-            descriptor.getScore(criteria)>0) {
-            result.add(descriptor);
+          if (isDebug()) {
+            Log.w(getClass().getSimpleName(), "Exception opening camera", e);
           }
         }
-
-        Collections.sort(result, new Comparator<CameraDescriptor>() {
-          @Override
-          public int compare(CameraDescriptor descriptor, CameraDescriptor t1) {
-            Descriptor lhs=(Descriptor)descriptor;
-            Descriptor rhs=(Descriptor)t1;
-
-            // descending, so invert normal side-ness
-
-            int lhScore=rhs.getScore(criteria);
-            int rhScore=lhs.getScore(criteria);
-
-            // from Integer.compare(), which is new to API Level 19
-
-            return(lhScore < rhScore ? -1 : (lhScore == rhScore ? 0 : 1));
-          }
-        });
-
-        getBus().post(new CameraEngine.CameraDescriptorsEvent(result));
       }
     });
   }
