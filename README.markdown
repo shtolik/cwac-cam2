@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.6.8'
+    compile 'com.commonsware.cwac:cam2:0.6.9'
 }
 ```
 
@@ -121,7 +121,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.6.8 of this library, which means it is coming
+This is version v0.6.9 of this library, which means it is coming
 along slowly.
 
 Demo
@@ -173,6 +173,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.6.9: fixed bug [in previous bug fix](https://github.com/commonsguy/cwac-cam2/issues/258), work around [destruction race condition](https://github.com/commonsguy/cwac-cam2/issues/257) 
 - v0.6.8: catch [`Camera` exceptions](https://github.com/commonsguy/cwac-cam2/issues/68), fixed [chronometer support](https://github.com/commonsguy/cwac-cam2/issues/255) 
 - v0.6.7: workaround for [Nexus 5X Android 7.0 bug](https://github.com/commonsguy/cwac-cam2/issues/184)
 - v0.6.6: [improved confirmation behavior for devices that need images rotated](https://github.com/commonsguy/cwac-cam2/issues/241)
