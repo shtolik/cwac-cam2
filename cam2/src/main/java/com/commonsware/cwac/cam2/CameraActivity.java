@@ -80,6 +80,14 @@ public class CameraActivity extends AbstractCameraActivity
   private static final String[] PERMS={Manifest.permission.CAMERA};
   private ConfirmationFragment confirmFrag;
   private boolean needsThumbnail=false;
+  private boolean isDestroyed=false;
+
+  @Override
+  protected void onDestroy() {
+    isDestroyed=true;
+
+    super.onDestroy();
+  }
 
   @Override
   protected String[] getNeededPermissions() {
@@ -226,11 +234,13 @@ public class CameraActivity extends AbstractCameraActivity
   }
 
   private void removeFragments() {
-    getFragmentManager()
+    if (!isDestroyed) {
+      getFragmentManager()
         .beginTransaction()
         .remove(confirmFrag)
         .remove(cameraFrag)
         .commit();
+    }
   }
 
   private boolean normalizeOrientation() {
