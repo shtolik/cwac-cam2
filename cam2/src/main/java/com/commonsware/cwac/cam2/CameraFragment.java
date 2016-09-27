@@ -184,8 +184,7 @@ public class CameraFragment extends Fragment {
    */
   @Override
   public void onStop() {
-    chronometer.stop();
-    reverseChronometer.stop();
+    stopChronometers();
 
     if (ctlr!=null) {
       try {
@@ -381,8 +380,7 @@ public class CameraFragment extends Fragment {
   @SuppressWarnings("unused")
   public void onEventMainThread(CameraEngine.VideoTakenEvent event) {
     isVideoRecording=false;
-    chronometer.stop();
-    reverseChronometer.stop();
+    stopChronometers();
 
     if (event.exception==null) {
       if (getArguments().getBoolean(ARG_UPDATE_MEDIA_STORE, false)) {
@@ -549,6 +547,16 @@ public class CameraFragment extends Fragment {
         reverseChronometer.reset();
         reverseChronometer.run();
       }
+    }
+  }
+
+  private void stopChronometers() {
+    if (chronometer!=null) {
+      chronometer.stop();
+    }
+
+    if (reverseChronometer!=null) {
+      reverseChronometer.stop();
     }
   }
 
