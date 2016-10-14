@@ -63,7 +63,7 @@ public class CameraTwoEngine extends CameraEngine {
       android.os.Process.THREAD_PRIORITY_BACKGROUND);
   final private Handler handler;
   final private Semaphore lock=new Semaphore(1);
-  private CountDownLatch closeLatch=null;
+//  private CountDownLatch closeLatch=null;
   private MediaActionSound shutter=new MediaActionSound();
   private List<Descriptor> descriptors=null;
 
@@ -243,9 +243,9 @@ public class CameraTwoEngine extends CameraEngine {
       lock.acquire();
 
       if (s.captureSession != null) {
-        closeLatch=new CountDownLatch(1);
+        // closeLatch=new CountDownLatch(1);
         s.captureSession.close();
-        closeLatch.await(2, TimeUnit.SECONDS);
+        // closeLatch.await(2, TimeUnit.SECONDS);
         s.captureSession=null;
       }
 
@@ -453,9 +453,11 @@ public class CameraTwoEngine extends CameraEngine {
     public void onClosed(CameraDevice camera) {
       super.onClosed(camera);
 
+/*
       if (closeLatch != null) {
         closeLatch.countDown();
       }
+*/
     }
   }
 
