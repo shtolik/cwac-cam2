@@ -40,6 +40,11 @@
     android:entryValues="@array/focusModeValues"
     android:title="@string/title_focus_mode" />
   <ListPreference
+    android:key="zoomStyle"
+    android:title="@string/title_zoom_style"
+    android:entries="@array/zoomStyles"
+    android:entryValues="@array/zoomStyleValues"/>
+  <ListPreference
     android:key="olockMode"
     android:title="@string/title_olock"
     android:entries="@array/olockTypes"

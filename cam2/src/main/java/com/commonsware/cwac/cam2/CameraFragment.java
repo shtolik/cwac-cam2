@@ -98,6 +98,7 @@ public class CameraFragment extends Fragment {
                                                 boolean updateMediaStore,
                                                 int quality, int sizeLimit,
                                                 int durationLimit,
+                                                ZoomStyle zoomStyle,
                                                 boolean facingExactMatch,
                                                 ChronoType chronoType) {
     CameraFragment f=new CameraFragment();
@@ -109,6 +110,7 @@ public class CameraFragment extends Fragment {
     args.putInt(ARG_QUALITY, quality);
     args.putInt(ARG_SIZE_LIMIT, sizeLimit);
     args.putInt(ARG_DURATION_LIMIT, durationLimit);
+    args.putSerializable(ARG_ZOOM_STYLE, zoomStyle);
     args.putBoolean(ARG_FACING_EXACT_MATCH, facingExactMatch);
 
     if (durationLimit>0 || chronoType!=ChronoType.COUNT_DOWN) {

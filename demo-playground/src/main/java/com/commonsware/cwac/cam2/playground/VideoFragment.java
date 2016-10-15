@@ -34,6 +34,7 @@ import com.commonsware.cwac.cam2.Facing;
 import com.commonsware.cwac.cam2.FocusMode;
 import com.commonsware.cwac.cam2.OrientationLockMode;
 import com.commonsware.cwac.cam2.VideoRecorderActivity;
+import com.commonsware.cwac.cam2.ZoomStyle;
 import java.io.File;
 
 public class VideoFragment extends PreferenceFragment {
@@ -177,6 +178,19 @@ public class VideoFragment extends PreferenceFragment {
         break;
       case 2:
         b.chronoType(ChronoType.COUNT_UP);
+        break;
+    }
+
+    int rawZoomStyle=
+      Integer.valueOf(prefs.getString("zoomStyle", "0"));
+
+    switch (rawZoomStyle) {
+      case 1:
+        b.zoomStyle(ZoomStyle.PINCH);
+        break;
+
+      case 2:
+        b.zoomStyle(ZoomStyle.SEEKBAR);
         break;
     }
 

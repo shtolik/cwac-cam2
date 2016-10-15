@@ -74,6 +74,7 @@ public class VideoRecorderActivity extends AbstractCameraActivity {
         getIntent().getIntExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1),
         getIntent().getIntExtra(MediaStore.EXTRA_SIZE_LIMIT, 0),
         getIntent().getIntExtra(MediaStore.EXTRA_DURATION_LIMIT, 0),
+        (ZoomStyle)getIntent().getSerializableExtra(EXTRA_ZOOM_STYLE),
         getIntent().getBooleanExtra(EXTRA_FACING_EXACT_MATCH, false),
         (ChronoType)getIntent().getSerializableExtra(EXTRA_CHRONOTYPE)));
   }
