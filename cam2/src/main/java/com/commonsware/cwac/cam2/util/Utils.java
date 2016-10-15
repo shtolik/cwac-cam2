@@ -24,6 +24,7 @@ import android.os.Build;
 import android.util.DisplayMetrics;
 import com.commonsware.cwac.cam2.CameraActivity;
 import com.commonsware.cwac.cam2.CameraDescriptor;
+import com.commonsware.cwac.cam2.VideoRecorderActivity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -76,6 +77,13 @@ public class Utils {
       if (ctxt.checkSelfPermission(Manifest.permission.CAMERA)!=
         PackageManager.PERMISSION_GRANTED) {
         throw new IllegalStateException("We do not have the CAMERA permission");
+      }
+
+      if (ctxt instanceof VideoRecorderActivity) {
+        if (ctxt.checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=
+          PackageManager.PERMISSION_GRANTED) {
+          throw new IllegalStateException("We do not have the RECORD_AUDIO permission");
+        }
       }
     }
   }
