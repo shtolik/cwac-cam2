@@ -20,14 +20,13 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +37,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import de.greenrobot.event.EventBus;
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE;
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
 
 /**
  * Base class for activities that integrate with CameraFragment
@@ -408,13 +412,24 @@ abstract public class AbstractCameraActivity extends Activity {
 
   protected void lockOrientation(OrientationLockMode mode) {
     if (mode==null || mode==OrientationLockMode.DEFAULT) {
-      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+      int orientation=getResources().getConfiguration().orientation;
+
+      if (orientation==Configuration.ORIENTATION_LANDSCAPE){
+        setRequestedOrientation(SCREEN_ORIENTATION_LANDSCAPE);
+      }
+      else if (orientation==Configuration.ORIENTATION_PORTRAIT){
+        setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
+      }
+      else {
+        setRequestedOrientation(SCREEN_ORIENTATION_UNSPECIFIED);
+      }
     }
     else if (mode==OrientationLockMode.LANDSCAPE) {
-      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+      setRequestedOrientation(SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
     }
     else {
-      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+      setRequestedOrientation(
+          SCREEN_ORIENTATION_SENSOR_PORTRAIT);
     }
   }
 
