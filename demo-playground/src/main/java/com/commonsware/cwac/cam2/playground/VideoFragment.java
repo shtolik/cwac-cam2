@@ -24,6 +24,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
 import android.preference.PreferenceFragment;
+import android.support.v4.content.FileProvider;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,6 +39,9 @@ import com.commonsware.cwac.cam2.ZoomStyle;
 import java.io.File;
 
 public class VideoFragment extends PreferenceFragment {
+  private static final String AUTHORITY=
+    BuildConfig.APPLICATION_ID+".provider";
+
   interface Contract {
     void takeVideo(Intent i);
     void setOutput(Uri uri);
@@ -87,7 +91,8 @@ public class VideoFragment extends PreferenceFragment {
     File f=new File(getActivity().getExternalFilesDir(null), "test.mp4");
 
     b.to(f);
-    ((Contract)getActivity()).setOutput(Uri.fromFile(f));
+    ((Contract)getActivity())
+      .setOutput(FileProvider.getUriForFile(getActivity(), AUTHORITY, f));
 
     if (prefs.getBoolean("highQuality", false)) {
       b.quality(AbstractCameraActivity.Quality.HIGH);
