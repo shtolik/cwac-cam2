@@ -169,6 +169,11 @@ please read [the contribution guidelines](.github/CONTRIBUTING.md), then
 post an [issue](https://github.com/commonsguy/cwac-cam2/issues).
 **Be certain to include complete steps for reproducing the issue.**
 
+You are also welcome to join
+[the CommonsWare Community](https://community.commonsware.com/)
+and post questions
+and ideas to [the CWAC category](https://community.commonsware.com/c/cwac).
+
 Do not ask for help via social media.
 
 Release Notes
