@@ -74,6 +74,20 @@ public class ClassicCameraEngine extends CameraEngine
 
             for (int cameraId=0; cameraId<count; cameraId++) {
               Camera.getCameraInfo(cameraId, info);
+              CameraConstraints constraint=CameraConstraints.get();
+
+              if (constraint!=null) {
+                if (!constraint.supportsFFC() && info.facing==
+                  Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                  break;
+                }
+
+                if (!constraint.supportsRFC() && info.facing==
+                  Camera.CameraInfo.CAMERA_FACING_BACK) {
+                  break;
+                }
+              }
+
               Descriptor descriptor=new Descriptor(cameraId, info);
 
               Camera camera=Camera.open(descriptor.getCameraId());

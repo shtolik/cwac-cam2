@@ -28,6 +28,7 @@ import android.view.OrientationEventListener;
 import android.view.Surface;
 import android.view.WindowManager;
 import com.commonsware.cwac.cam2.CameraConfigurator;
+import com.commonsware.cwac.cam2.CameraConstraints;
 import com.commonsware.cwac.cam2.CameraEngine;
 import com.commonsware.cwac.cam2.CameraPlugin;
 import com.commonsware.cwac.cam2.CameraSession;
@@ -116,10 +117,12 @@ public class OrientationPlugin implements CameraPlugin {
       int displayOrientation=getDisplayOrientation(info, true);
       int cameraDisplayOrientation=90;
 
-      if ("samsung".equals(Build.MANUFACTURER) &&
-        "sf2wifixx".equals(Build.PRODUCT)) {
-        cameraDisplayOrientation=0;
+      CameraConstraints constraints=CameraConstraints.get();
+
+      if (constraints!=null && constraints.getCameraDisplayOrientation()>=0) {
+        cameraDisplayOrientation=constraints.getCameraDisplayOrientation();
       }
+
       else if (useAltAlgorithm()) {
         int degrees=0;
         int temp=displayOrientation;

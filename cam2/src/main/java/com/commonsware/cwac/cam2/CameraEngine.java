@@ -21,7 +21,6 @@ import android.util.Log;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -348,8 +347,13 @@ abstract public class CameraEngine {
       useCameraTwo=true;
     }
     else {
-      useCameraTwo=Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP
-        && DeviceMatcher.supportsCameraTwo();
+      useCameraTwo=Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP;
+
+      CameraConstraints constraints=CameraConstraints.get();
+
+      if (constraints!=null) {
+        useCameraTwo=useCameraTwo && constraints.supportsCameraTwo();
+      }
     }
 
     if (useCameraTwo) {
