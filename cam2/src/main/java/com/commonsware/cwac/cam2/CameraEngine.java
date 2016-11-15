@@ -18,13 +18,13 @@ import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.os.Build;
 import android.util.Log;
+import org.greenrobot.eventbus.EventBus;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import de.greenrobot.event.EventBus;
 
 /**
  * Base class for camera engines, which abstract out camera
@@ -37,7 +37,7 @@ abstract public class CameraEngine {
   private static final int KEEP_ALIVE_SECONDS=60;
   private static volatile CameraEngine singletonClassic=null;
   private static volatile CameraEngine singletonTwo=null;
-  private EventBus bus=EventBus.getDefault();
+  private EventBus bus=AbstractCameraActivity.BUS;
   private boolean isDebug=false;
   private LinkedBlockingQueue<Runnable> queue=new LinkedBlockingQueue<Runnable>();
   private ThreadPoolExecutor pool;

@@ -39,16 +39,15 @@ import android.os.HandlerThread;
 import android.util.Log;
 import android.view.Surface;
 import com.commonsware.cwac.cam2.util.Size;
+import org.greenrobot.eventbus.EventBus;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
-import de.greenrobot.event.EventBus;
 
 /**
  * Implementation of a CameraEngine that supports the

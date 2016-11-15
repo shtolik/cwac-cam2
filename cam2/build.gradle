@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 dependencies {
-    compile 'com.github.clans:fab:1.6.2'
-    compile 'de.greenrobot:eventbus:2.4.0'
+    compile 'com.github.clans:fab:1.6.4'
+    compile 'org.greenrobot:eventbus:3.0.0'
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
 
     defaultConfig {
         minSdkVersion 15
@@ -33,6 +33,7 @@ android.libraryVariants.all { variant ->
         }
         exclude '**/BuildConfig.java'
         exclude '**/R.java'
+        exclude 'com/android/**'
     }
 }
 

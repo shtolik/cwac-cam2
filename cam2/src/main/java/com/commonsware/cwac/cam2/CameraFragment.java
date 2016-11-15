@@ -1,15 +1,20 @@
 /***
- Copyright (c) 2015-2016 CommonsWare, LLC
-
- Licensed under the Apache License, Version 2.0 (the "License"); you may
- not use this file except in compliance with the License. You may obtain
- a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * Copyright (c) 2015-2016 CommonsWare, LLC
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you
+ * may
+ * not use this file except in compliance with the License. You may
+ * obtain
+ * a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing,
+ * software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.
+ * See the License for the specific language governing permissions
+ * and
+ * limitations under the License.
  */
 
 package com.commonsware.cwac.cam2;
@@ -38,9 +43,10 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import java.io.File;
 import java.util.LinkedList;
-import de.greenrobot.event.EventBus;
 
 /**
  * Fragment for displaying a camera preview, with hooks to allow
@@ -48,7 +54,8 @@ import de.greenrobot.event.EventBus;
  */
 public class CameraFragment extends Fragment {
   private static final String ARG_OUTPUT="output";
-  private static final String ARG_UPDATE_MEDIA_STORE="updateMediaStore";
+  private static final String ARG_UPDATE_MEDIA_STORE=
+    "updateMediaStore";
   private static final String ARG_SKIP_ORIENTATION_NORMALIZATION
     ="skipOrientationNormalization";
   private static final String ARG_IS_VIDEO="isVideo";
@@ -56,7 +63,8 @@ public class CameraFragment extends Fragment {
   private static final String ARG_SIZE_LIMIT="sizeLimit";
   private static final String ARG_DURATION_LIMIT="durationLimit";
   private static final String ARG_ZOOM_STYLE="zoomStyle";
-  private static final String ARG_FACING_EXACT_MATCH="facingExactMatch";
+  private static final String ARG_FACING_EXACT_MATCH=
+    "facingExactMatch";
   private static final String ARG_CHRONOTYPE="chronotype";
   private static final int PINCH_ZOOM_DELTA=20;
   private CameraController ctlr;
@@ -91,12 +99,13 @@ public class CameraFragment extends Fragment {
     args.putBoolean(ARG_FACING_EXACT_MATCH, facingExactMatch);
     f.setArguments(args);
 
-    return(f);
+    return (f);
   }
 
   public static CameraFragment newVideoInstance(Uri output,
                                                 boolean updateMediaStore,
-                                                int quality, int sizeLimit,
+                                                int quality,
+                                                int sizeLimit,
                                                 int durationLimit,
                                                 ZoomStyle zoomStyle,
                                                 boolean facingExactMatch,
@@ -119,7 +128,7 @@ public class CameraFragment extends Fragment {
 
     f.setArguments(args);
 
-    return(f);
+    return (f);
   }
 
   /**
@@ -144,7 +153,7 @@ public class CameraFragment extends Fragment {
   public void onStart() {
     super.onStart();
 
-    EventBus.getDefault().register(this);
+    AbstractCameraActivity.BUS.register(this);
 
     if (ctlr!=null) {
       ctlr.start();
@@ -160,11 +169,12 @@ public class CameraFragment extends Fragment {
 
       if (ab!=null) {
         ab.setBackgroundDrawable(getActivity()
-            .getResources()
-            .getDrawable(R.drawable.cwac_cam2_action_bar_bg_transparent));
+          .getResources()
+          .getDrawable(
+            R.drawable.cwac_cam2_action_bar_bg_transparent));
         ab.setTitle("");
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
           ab.setDisplayHomeAsUpEnabled(false);
         }
         else {
@@ -194,11 +204,12 @@ public class CameraFragment extends Fragment {
       }
       catch (Exception e) {
         ctlr.postError(ErrorConstants.ERROR_STOPPING, e);
-        Log.e(getClass().getSimpleName(), "Exception stopping controller", e);
+        Log.e(getClass().getSimpleName(),
+          "Exception stopping controller", e);
       }
     }
 
-    EventBus.getDefault().unregister(this);
+    AbstractCameraActivity.BUS.unregister(this);
 
     super.onStop();
   }
@@ -227,18 +238,24 @@ public class CameraFragment extends Fragment {
    * @return the UI being managed by this fragment
    */
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    View v=inflater.inflate(R.layout.cwac_cam2_fragment, container, false);
+  public View onCreateView(LayoutInflater inflater,
+                           ViewGroup container,
+                           Bundle savedInstanceState) {
+    View v=
+      inflater.inflate(R.layout.cwac_cam2_fragment, container, false);
 
-    previewStack=(ViewGroup)v.findViewById(R.id.cwac_cam2_preview_stack);
+    previewStack=
+      (ViewGroup)v.findViewById(R.id.cwac_cam2_preview_stack);
 
     progress=v.findViewById(R.id.cwac_cam2_progress);
-    fabPicture=(FloatingActionButton)v.findViewById(R.id.cwac_cam2_picture);
+    fabPicture=
+      (FloatingActionButton)v.findViewById(R.id.cwac_cam2_picture);
 
     if (isVideo()) {
       fabPicture.setImageResource(R.drawable.cwac_cam2_ic_videocam);
       chronometer=(Chronometer)v.findViewById(R.id.chrono);
-      reverseChronometer=(ReverseChronometer)v.findViewById(R.id.rchrono);
+      reverseChronometer=
+        (ReverseChronometer)v.findViewById(R.id.rchrono);
     }
 
     fabPicture.setOnClickListener(new View.OnClickListener() {
@@ -248,7 +265,8 @@ public class CameraFragment extends Fragment {
       }
     });
 
-    fabSwitch=(FloatingActionButton)v.findViewById(R.id.cwac_cam2_switch_camera);
+    fabSwitch=(FloatingActionButton)v.findViewById(
+      R.id.cwac_cam2_switch_camera);
     fabSwitch.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -260,16 +278,18 @@ public class CameraFragment extends Fragment {
         }
         catch (Exception e) {
           ctlr.postError(ErrorConstants.ERROR_SWITCHING_CAMERAS, e);
-          Log.e(getClass().getSimpleName(), "Exception switching camera", e);
+          Log.e(getClass().getSimpleName(),
+            "Exception switching camera", e);
         }
       }
     });
 
-    changeMenuIconAnimation((FloatingActionMenu)v.findViewById(R.id.cwac_cam2_settings));
+    changeMenuIconAnimation(
+      (FloatingActionMenu)v.findViewById(R.id.cwac_cam2_settings));
 
     onHiddenChanged(false); // hack, since this does not get
-                            // called on initial display
-    
+    // called on initial display
+
     fabPicture.setEnabled(false);
     fabSwitch.setEnabled(false);
 
@@ -277,7 +297,7 @@ public class CameraFragment extends Fragment {
       prepController();
     }
 
-    return(v);
+    return (v);
   }
 
   public void shutdown() {
@@ -304,7 +324,7 @@ public class CameraFragment extends Fragment {
    * @return the CameraController this fragment delegates to
    */
   public CameraController getController() {
-    return(ctlr);
+    return (ctlr);
   }
 
   /**
@@ -339,13 +359,16 @@ public class CameraFragment extends Fragment {
   }
 
   @SuppressWarnings("unused")
-  public void onEventMainThread(CameraController.ControllerReadyEvent event) {
+  @Subscribe(threadMode=ThreadMode.MAIN)
+  public void onEventMainThread(
+    CameraController.ControllerReadyEvent event) {
     if (event.isEventForController(ctlr)) {
       prepController();
     }
   }
 
   @SuppressWarnings("unused")
+  @Subscribe(threadMode=ThreadMode.MAIN)
   public void onEventMainThread(CameraEngine.OpenedEvent event) {
     if (event.exception==null) {
       progress.setVisibility(View.GONE);
@@ -374,12 +397,14 @@ public class CameraFragment extends Fragment {
       }
     }
     else {
-      ctlr.postError(ErrorConstants.ERROR_OPEN_CAMERA, event.exception);
+      ctlr.postError(ErrorConstants.ERROR_OPEN_CAMERA,
+        event.exception);
       getActivity().finish();
     }
   }
 
   @SuppressWarnings("unused")
+  @Subscribe(threadMode=ThreadMode.MAIN)
   public void onEventMainThread(CameraEngine.VideoTakenEvent event) {
     isVideoRecording=false;
     stopChronometers();
@@ -408,12 +433,16 @@ public class CameraFragment extends Fragment {
       shutdown();
     }
     else {
-      ctlr.postError(ErrorConstants.ERROR_VIDEO_TAKEN, event.exception);
+      ctlr.postError(ErrorConstants.ERROR_VIDEO_TAKEN,
+        event.exception);
       getActivity().finish();
     }
   }
 
-  public void onEventMainThread(CameraEngine.SmoothZoomCompletedEvent event) {
+  @SuppressWarnings("unused")
+  @Subscribe(threadMode=ThreadMode.MAIN)
+  public void onEventMainThread(
+    CameraEngine.SmoothZoomCompletedEvent event) {
     inSmoothPinchZoom=false;
     zoomSlider.setEnabled(true);
   }
@@ -434,8 +463,9 @@ public class CameraFragment extends Fragment {
 
     if (output!=null) {
       b.toUri(getActivity(), output,
-          getArguments().getBoolean(ARG_UPDATE_MEDIA_STORE, false),
-          getArguments().getBoolean(ARG_SKIP_ORIENTATION_NORMALIZATION, false));
+        getArguments().getBoolean(ARG_UPDATE_MEDIA_STORE, false),
+        getArguments().getBoolean(ARG_SKIP_ORIENTATION_NORMALIZATION,
+          false));
     }
 
     fabPicture.setEnabled(false);
@@ -490,7 +520,8 @@ public class CameraFragment extends Fragment {
     }
     catch (Exception e) {
       ctlr.postError(ErrorConstants.ERROR_STOPPING_VIDEO, e);
-      Log.e(getClass().getSimpleName(), "Exception stopping recording of video", e);
+      Log.e(getClass().getSimpleName(),
+        "Exception stopping recording of video", e);
     }
     finally {
       isVideoRecording=false;
@@ -508,11 +539,12 @@ public class CameraFragment extends Fragment {
   }
 
   private boolean canSwitchSources() {
-    return(!getArguments().getBoolean(ARG_FACING_EXACT_MATCH, false));
+    return (!getArguments().getBoolean(ARG_FACING_EXACT_MATCH,
+      false));
   }
 
   private boolean isVideo() {
-    return(getArguments().getBoolean(ARG_IS_VIDEO, false));
+    return (getArguments().getBoolean(ARG_IS_VIDEO, false));
   }
 
   private ChronoType getChronoType() {
@@ -523,7 +555,7 @@ public class CameraFragment extends Fragment {
       chronoType=ChronoType.NONE;
     }
 
-    return(chronoType);
+    return (chronoType);
   }
 
   private void configureChronometer() {
@@ -569,7 +601,7 @@ public class CameraFragment extends Fragment {
     cv.setMirror(mirrorPreview);
     cameraViews.add(cv);
 
-    for (int i=1; i < ctlr.getNumberOfCameras(); i++) {
+    for (int i=1; i<ctlr.getNumberOfCameras(); i++) {
       cv=new CameraView(getActivity());
       cv.setVisibility(View.INVISIBLE);
       cv.setMirror(mirrorPreview);
@@ -582,13 +614,18 @@ public class CameraFragment extends Fragment {
 
   // based on https://goo.gl/3IUM8K
 
-  private void changeMenuIconAnimation(final FloatingActionMenu menu) {
+  private void changeMenuIconAnimation(
+    final FloatingActionMenu menu) {
     AnimatorSet set=new AnimatorSet();
     final ImageView v=menu.getMenuIconView();
-    ObjectAnimator scaleOutX=ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 0.2f);
-    ObjectAnimator scaleOutY=ObjectAnimator.ofFloat(v, "scaleY", 1.0f, 0.2f);
-    ObjectAnimator scaleInX=ObjectAnimator.ofFloat(v, "scaleX", 0.2f, 1.0f);
-    ObjectAnimator scaleInY=ObjectAnimator.ofFloat(v, "scaleY", 0.2f, 1.0f);
+    ObjectAnimator scaleOutX=
+      ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 0.2f);
+    ObjectAnimator scaleOutY=
+      ObjectAnimator.ofFloat(v, "scaleY", 1.0f, 0.2f);
+    ObjectAnimator scaleInX=
+      ObjectAnimator.ofFloat(v, "scaleX", 0.2f, 1.0f);
+    ObjectAnimator scaleInY=
+      ObjectAnimator.ofFloat(v, "scaleY", 0.2f, 1.0f);
 
     scaleOutX.setDuration(50);
     scaleOutY.setDuration(50);
@@ -613,13 +650,14 @@ public class CameraFragment extends Fragment {
   }
 
   private ZoomStyle getZoomStyle() {
-    ZoomStyle result=(ZoomStyle)getArguments().getSerializable(ARG_ZOOM_STYLE);
+    ZoomStyle result=
+      (ZoomStyle)getArguments().getSerializable(ARG_ZOOM_STYLE);
 
     if (result==null) {
       result=ZoomStyle.NONE;
     }
 
-    return(result);
+    return (result);
   }
 
   private ScaleGestureDetector.OnScaleGestureListener scaleListener=

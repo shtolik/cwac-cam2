@@ -32,11 +32,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.commonsware.cwac.cam2.util.Utils;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import de.greenrobot.event.EventBus;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE;
@@ -190,6 +192,7 @@ abstract public class AbstractCameraActivity extends Activity {
   protected static final String TAG_CAMERA=CameraFragment.class.getCanonicalName();
   private static final int REQUEST_PERMS=13401;
   protected CameraFragment cameraFrag;
+  public static final EventBus BUS=new EventBus();
 
   /**
    * Standard lifecycle method, serving as the main entry
@@ -279,7 +282,7 @@ abstract public class AbstractCameraActivity extends Activity {
   public void onStart() {
     super.onStart();
 
-    EventBus.getDefault().register(this);
+    BUS.register(this);
   }
 
   /**
@@ -288,7 +291,7 @@ abstract public class AbstractCameraActivity extends Activity {
    */
   @Override
   public void onStop() {
-    EventBus.getDefault().unregister(this);
+    BUS.unregister(this);
 
     if (cameraFrag!=null){
       if (isChangingConfigurations()) {
@@ -314,21 +317,25 @@ abstract public class AbstractCameraActivity extends Activity {
   }
 
   @SuppressWarnings("unused")
+  @Subscribe(threadMode =ThreadMode.MAIN)
   public void onEventMainThread(CameraController.NoSuchCameraEvent event) {
     finish();
   }
 
   @SuppressWarnings("unused")
+  @Subscribe(threadMode =ThreadMode.MAIN)
   public void onEventMainThread(CameraController.ControllerDestroyedEvent event) {
     finish();
   }
 
   @SuppressWarnings("unused")
+  @Subscribe(threadMode =ThreadMode.MAIN)
   public void onEventMainThread(CameraEngine.CameraTwoGenericEvent event) {
     finish();
   }
 
   @SuppressWarnings("unused")
+  @Subscribe(threadMode =ThreadMode.MAIN)
   public void onEventMainThread(CameraEngine.DeepImpactEvent event) {
     finish();
   }

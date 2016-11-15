@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import de.greenrobot.event.EventBus;
 
 /**
  * Implementation of a CameraEngine that supports the
@@ -475,7 +474,7 @@ public class ClassicCameraEngine extends CameraEngine
   public void onZoomChange(int zoomValue, boolean stopped,
                            Camera camera) {
     if (stopped) {
-      EventBus.getDefault().post(new SmoothZoomCompletedEvent());
+      AbstractCameraActivity.BUS.post(new SmoothZoomCompletedEvent());
     }
   }
 

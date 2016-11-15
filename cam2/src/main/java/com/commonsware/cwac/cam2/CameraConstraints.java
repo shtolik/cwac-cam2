@@ -55,11 +55,13 @@ public class CameraConstraints {
       .product("hammerhead")
       .supportsCameraTwo(false)
       .build());
+/*
     add(new Builder()
       .manufacturer("LGE")
       .product("bullhead")
       .supportsCameraTwo(false)
       .build());
+*/
     add(new Builder()
       .manufacturer("LGE")
       .product("g3_tmo_us")
