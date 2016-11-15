@@ -229,8 +229,8 @@ public class OrientationPlugin implements CameraPlugin {
           displayOrientation=270;
         }
 
-        if (/* "Huawei".equals(Build.MANUFACTURER) &&
-          "angler".equals(Build.PRODUCT) && */ displayOrientation==270) {
+        if ("Huawei".equals(Build.MANUFACTURER) &&
+          "angler".equals(Build.PRODUCT) && displayOrientation==270) {
           displayOrientation=90;
         }
       }
