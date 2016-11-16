@@ -225,6 +225,10 @@ public class PictureFragment extends PreferenceFragment {
 
     b.onError(new ErrorResultReceiver());
 
+    if (prefs.getBoolean("requestPermissions", true)) {
+      b.requestPermissions();
+    }
+
     Intent result;
 
     if (prefs.getBoolean("useChooser", false)) {

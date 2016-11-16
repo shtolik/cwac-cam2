@@ -75,6 +75,16 @@ the library-provided activities. In other words, do not have
 
 Upgrade Notes
 -------------
+If you are moving from prior versions to 0.7.0 or higher, note
+that this library now uses v3.0.0 of [greenrobot's EventBus](https://github.com/greenrobot/EventBus),
+whereas previous versions of the library used a 2.x.x generation
+of that library. This should not impact your own use of either
+version of greenrobot's EventBus. Also note that the library will not
+request runtime permissions on Android 6.0+, as your app should be
+doing that. You can call `requestPermissions()` on the `IntentBuilder`
+to have the library request the permissions instead. See
+[the permissions documentation](docs/Permissions.md) for more.
+
 If you are moving from 0.5.x to 0.6.0 or higher, please note that
 the default camera engine is now the one using `android.hardware.Camera`.
 The `forceClassic()` method is deprecated, replaced with

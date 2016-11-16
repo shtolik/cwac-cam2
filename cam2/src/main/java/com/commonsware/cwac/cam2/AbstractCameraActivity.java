@@ -144,6 +144,7 @@ abstract public class AbstractCameraActivity extends Activity {
    */
   public static final String EXTRA_ORIENTATION_LOCK_MODE=
     "cwac_cam2_olock_mode";
+
   /**
    * Extra name for whether the camera should allow zoom and
    * how. Value should be a ZoomStyle (NONE, PINCH, SEEKBAR).
@@ -151,6 +152,15 @@ abstract public class AbstractCameraActivity extends Activity {
    */
   public static final String EXTRA_ZOOM_STYLE=
     "cwac_cam2_zoom_style";
+
+  /**
+   * Extra name for runtime permission policy. If true, we check
+   * for runtime permissions and fail fast if they are not already
+   * granted. If false, if we lack runtime permissions (and need them
+   * based on API level), we request them ourselves. Defaults to true.
+   */
+  public static final String EXTRA_FAIL_IF_NO_PERMISSION=
+    "cwac_cam2_fail_if_no_permission";
 
   /**
    * @return true if the activity wants FEATURE_ACTION_BAR_OVERLAY,
@@ -205,7 +215,7 @@ abstract public class AbstractCameraActivity extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    Utils.validateEnvironment(this);
+    Utils.validateEnvironment(this, failIfNoPermissions());
 
     OrientationLockMode olockMode=
       (OrientationLockMode)getIntent().getSerializableExtra(EXTRA_ORIENTATION_LOCK_MODE);
@@ -250,8 +260,11 @@ abstract public class AbstractCameraActivity extends Activity {
       if (perms.length==0) {
         init();
       }
-      else {
+      else if (!failIfNoPermissions()) {
         requestPermissions(perms, REQUEST_PERMS);
+      }
+      else {
+        throw new IllegalStateException("We lack the necessary permissions!");
       }
     }
     else {
@@ -453,6 +466,10 @@ abstract public class AbstractCameraActivity extends Activity {
     return(Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1);
   }
 
+  private boolean failIfNoPermissions() {
+    return(getIntent().getBooleanExtra(EXTRA_FAIL_IF_NO_PERMISSION, true));
+  }
+
   private String[] netPermissions(String[] wanted) {
     ArrayList<String> result=new ArrayList<String>();
 
@@ -483,6 +500,7 @@ abstract public class AbstractCameraActivity extends Activity {
     abstract public Intent buildChooserBaseIntent();
 
     protected final Intent result;
+    private final Context ctxt;
 
     /**
      * Standard constructor. May throw a runtime exception
@@ -492,7 +510,7 @@ abstract public class AbstractCameraActivity extends Activity {
      * @param ctxt any Context will do
      */
     public IntentBuilder(Context ctxt, Class clazz) {
-      Utils.validateEnvironment(ctxt);
+      this.ctxt=ctxt.getApplicationContext();
       result=new Intent(ctxt, clazz);
     }
 
@@ -502,6 +520,9 @@ abstract public class AbstractCameraActivity extends Activity {
      * @return the Intent to use to start the activity
      */
     public Intent build() {
+      Utils.validateEnvironment(ctxt,
+        result.getBooleanExtra(EXTRA_FAIL_IF_NO_PERMISSION, true));
+
       return(result);
     }
 
@@ -755,6 +776,18 @@ abstract public class AbstractCameraActivity extends Activity {
      */
     public T zoomStyle(ZoomStyle zoomStyle) {
       result.putExtra(EXTRA_ZOOM_STYLE, zoomStyle);
+
+      return((T)this);
+    }
+
+    /**
+     * Call to request that the library request permissions from the
+     * user, rather than that being handled by the app.
+     *
+     * @return the builder, for further configuration
+     */
+    public T requestPermissions() {
+      result.putExtra(EXTRA_FAIL_IF_NO_PERMISSION, false);
 
       return((T)this);
     }

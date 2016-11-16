@@ -1,5 +1,14 @@
 # Compatibility Status
 
+## Version 0.7.x
+| Device                         | Identifier                  | Version | Issues |
+| ------------------------------ |:---------------------------:|:-------:|--------|
+| Google Nexus 5X                | `LGE`/`bullhead`            | 7.0     | [265](https://github.com/commonsguy/cwac-cam2/issues/265) |
+| Google Nexus 6P                | `Huawei`/`angler`           | 7.0     | |
+| Google Nexus S                 | `samsung`/`soju`            | 4.1.2   | |
+| Google Pixel                   | `Google`/`sailfish`         | 7.1     | [265](https://github.com/commonsguy/cwac-cam2/issues/265) |
+
+
 ## Version 0.6.x
 | Device                         | Identifier                  | Version | Issues |
 | ------------------------------ |:---------------------------:|:-------:|--------|
@@ -40,6 +49,7 @@
 | Samsung Galaxy S III           | `samsung`/`m0xx`            | 4.3     | [225](https://github.com/commonsguy/cwac-cam2/issues/225) |
 | Samsung Galaxy S4              | `samsung`/`jfltespr`        | 5.0.1   | |
 | Samsung Galaxy S4              | `samsung`/`jflteuc`         | 4.2.2   | |
+| Samsung Galaxy S4 Mini         | `samsung`/`serranoltexx`    | 4.4.2   | [247](https://github.com/commonsguy/cwac-cam2/issues/247) |
 | Samsung Galaxy S4 Zoom         | `samsung`/`mprojectlteuc`   | 4.2.2   | |
 | Samsung Galaxy S5              | `samsung`/`k3gxx`           | 5.0     | |
 | Samsung Galaxy S6 (G920F)      | `samsung`/`zerofltexx`      | 6.0.1   | |

@@ -57,5 +57,9 @@
     android:entries="@array/chronoTypes"
     android:entryValues="@array/chronoValues"
     android:title="@string/title_chrono_type" />
+  <SwitchPreference
+    android:key="requestPermissions"
+    android:title="@string/title_request_permissions"
+    android:defaultValue="true"/>
 
 </PreferenceScreen>

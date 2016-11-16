@@ -48,7 +48,8 @@ public class Utils {
    *
    * @param ctxt any Context will do
    */
-  public static void validateEnvironment(Context ctxt) {
+  public static void validateEnvironment(Context ctxt,
+                                         boolean failIfNoPermissions) {
     if (Build.VERSION.SDK_INT<Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
       throw new IllegalStateException("App is running on device older than API Level 14");
     }
@@ -73,7 +74,7 @@ public class Utils {
       }
     }
 
-    if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+    if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M && failIfNoPermissions) {
       if (ctxt.checkSelfPermission(Manifest.permission.CAMERA)!=
         PackageManager.PERMISSION_GRANTED) {
         throw new IllegalStateException("We do not have the CAMERA permission");

@@ -35,6 +35,7 @@ and what their behavior is:
 | `onError()`            | `EXTRA_UNHANDLED_ERROR_RECEIVER` | `ResultReceiver`                   | Provide a IPC callback to be notified about errors inside Cam2 |
 | `chronoType()`         | `EXTRA_CHRONOTYPE`        | `ChronoType` | Whether there should be a timer shown on the video recording preview screen, and, if so, whether it counts down the remaining time on a time-limited recording or whether it counts up for how long the current recording is. |
 | `orientationLockMode()`| `EXTRA_ORIENTATION_LOCK_MODE`| `OrientationLockMode`                  | Locks the device orientation (`PORTRAIT` or `LANDSCAPE`) or allows for config changes (`DEFAULT`) |
+| `requestPermissions()` | `EXTRA_FAIL_IF_NO_PERMISSION`| none (extra takes a `boolean`)         | Indicates if the library should request runtime permissions if your app did not do so already |
 
 Note that `to()` is **required**.
 

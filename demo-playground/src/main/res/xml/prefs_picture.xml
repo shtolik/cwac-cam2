@@ -63,11 +63,10 @@
     android:title="@string/title_confirmation_quality"
     android:entries="@array/confirmationQuality"
     android:entryValues="@array/confirmationQuality"/>
-<!--
   <SwitchPreference
-    android:key="allowSwitchFlashMode"
-    android:title="@string/title_allow_switch_flash_mode"/>
--->
+    android:key="requestPermissions"
+    android:title="@string/title_request_permissions"
+    android:defaultValue="true"/>
   <SwitchPreference
     android:key="useChooser"
     android:title="@string/title_use_chooser"/>
