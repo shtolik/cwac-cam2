@@ -16,7 +16,9 @@ package com.commonsware.cwac.cam2;
 
 import android.media.CamcorderProfile;
 import android.os.Build;
+import com.commonsware.cwac.cam2.util.Size;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class CameraConstraints {
@@ -32,6 +34,10 @@ public class CameraConstraints {
   private final int cameraDisplayOrientation;
   private final boolean supportsFFC;
   private final boolean supportsRFC;
+  private final ArrayList<Size> previewFFCSizeWhitelist;
+  private final ArrayList<Size> previewRFCSizeWhitelist;
+  private final ArrayList<Size> pictureFFCSizeWhitelist;
+  private final ArrayList<Size> pictureRFCSizeWhitelist;
 
   static {
     add(new Builder()
@@ -135,7 +141,11 @@ public class CameraConstraints {
                             boolean disableFocusMode,
                             int cameraDisplayOrientation,
                             boolean supportsFFC,
-                            boolean supportsRFC) {
+                            boolean supportsRFC,
+                            ArrayList<Size> previewFFCSizeWhitelist,
+                            ArrayList<Size> previewRFCSizeWhitelist,
+                            ArrayList<Size> pictureFFCSizeWhitelist,
+                            ArrayList<Size> pictureRFCSizeWhitelist) {
     this.manufacturer=manufacturer;
     this.product=product;
     this.model=model;
@@ -145,6 +155,10 @@ public class CameraConstraints {
     this.cameraDisplayOrientation=cameraDisplayOrientation;
     this.supportsFFC=supportsFFC;
     this.supportsRFC=supportsRFC;
+    this.previewFFCSizeWhitelist=previewFFCSizeWhitelist;
+    this.previewRFCSizeWhitelist=previewRFCSizeWhitelist;
+    this.pictureFFCSizeWhitelist=pictureFFCSizeWhitelist;
+    this.pictureRFCSizeWhitelist=pictureRFCSizeWhitelist;
   }
 
   public boolean isMatch() {
@@ -189,6 +203,22 @@ public class CameraConstraints {
     return(supportsRFC);
   }
 
+  public List<Size> getPreviewFFCSizeWhitelist() {
+    return(previewFFCSizeWhitelist);
+  }
+
+  public List<Size> getPreviewRFCSizeWhitelist() {
+    return(previewRFCSizeWhitelist);
+  }
+
+  public List<Size> getPictureFFCSizeWhitelist() {
+    return(pictureFFCSizeWhitelist);
+  }
+
+  public List<Size> getPictureRFCSizeWhitelist() {
+    return(pictureRFCSizeWhitelist);
+  }
+
   public static class Builder {
     private Pattern manufacturer;
     private Pattern product;
@@ -199,6 +229,10 @@ public class CameraConstraints {
     private int cameraDisplayOrientation=-1;
     private boolean supportsFFC=true;
     private boolean supportsRFC=true;
+    private ArrayList<Size> previewFFCSizeWhitelist;
+    private ArrayList<Size> previewRFCSizeWhitelist;
+    private ArrayList<Size> pictureFFCSizeWhitelist;
+    private ArrayList<Size> pictureRFCSizeWhitelist;
 
     public Builder manufacturer(String mfr) {
       return(manufacturer(Pattern.compile(mfr)));
@@ -266,10 +300,60 @@ public class CameraConstraints {
       return(this);
     }
 
+    public Builder previewFFCSizeWhitelist(Size... sizes) {
+      if (previewFFCSizeWhitelist==null) {
+        previewFFCSizeWhitelist=new ArrayList<>();
+      }
+
+      for (Size size : sizes) {
+        previewFFCSizeWhitelist.add(size);
+      }
+
+      return(this);
+    }
+
+    public Builder previewRFCSizeWhitelist(Size... sizes) {
+      if (previewRFCSizeWhitelist==null) {
+        previewRFCSizeWhitelist=new ArrayList<>();
+      }
+
+      for (Size size : sizes) {
+        previewRFCSizeWhitelist.add(size);
+      }
+
+      return(this);
+    }
+
+    public Builder pictureFFCSizeWhitelist(Size... sizes) {
+      if (pictureFFCSizeWhitelist==null) {
+        pictureFFCSizeWhitelist=new ArrayList<>();
+      }
+
+      for (Size size : sizes) {
+        pictureFFCSizeWhitelist.add(size);
+      }
+
+      return(this);
+    }
+
+    public Builder pictureRFCSizeWhitelist(Size... sizes) {
+      if (pictureRFCSizeWhitelist==null) {
+        pictureRFCSizeWhitelist=new ArrayList<>();
+      }
+
+      for (Size size : sizes) {
+        pictureRFCSizeWhitelist.add(size);
+      }
+
+      return(this);
+    }
+
     public CameraConstraints build() {
       return(new CameraConstraints(manufacturer, product, model,
         supportsCameraTwo, highCamcorderProfile, disableFocusMode,
-        cameraDisplayOrientation, supportsFFC, supportsRFC));
+        cameraDisplayOrientation, supportsFFC, supportsRFC,
+        previewFFCSizeWhitelist, previewRFCSizeWhitelist,
+        pictureFFCSizeWhitelist, pictureRFCSizeWhitelist));
     }
   }
 }

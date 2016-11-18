@@ -108,22 +108,56 @@ public class CameraTwoEngine extends CameraEngine {
                 CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
               android.util.Size[] rawSizes=
                 map.getOutputSizes(SurfaceTexture.class);
-              ArrayList<Size> sizes=new ArrayList<Size>();
+              CameraConstraints constraint=CameraConstraints.get();
 
-              for (android.util.Size size : rawSizes) {
-                if (size.getWidth()<2160 &&
-                  size.getHeight()<2160) {
-                  sizes.add(
-                    new Size(size.getWidth(), size.getHeight()));
+              camera.setFacingFront(
+                cc.get(CameraCharacteristics.LENS_FACING)==
+                  CameraCharacteristics.LENS_FACING_FRONT);
+
+              List<Size> sizes=null;
+
+              if (constraint!=null) {
+                if (camera.isFacingFront) {
+                  sizes=constraint.getPreviewFFCSizeWhitelist();
+                }
+                else {
+                  sizes=constraint.getPreviewRFCSizeWhitelist();
+                }
+              }
+
+              if (sizes==null) {
+                sizes=new ArrayList<Size>();
+
+                for (android.util.Size size : rawSizes) {
+                  if (size.getWidth()<2160 &&
+                    size.getHeight()<2160) {
+                    sizes.add(
+                      new Size(size.getWidth(), size.getHeight()));
+                  }
                 }
               }
 
               camera.setPreviewSizes(sizes);
-              camera.setPictureSizes(Arrays.asList(
-                map.getOutputSizes(ImageFormat.JPEG)));
-              camera.setFacingFront(
-                cc.get(CameraCharacteristics.LENS_FACING)==
-                  CameraCharacteristics.LENS_FACING_FRONT);
+              sizes=null;
+
+              if (constraint!=null) {
+                if (camera.isFacingFront) {
+                  sizes=constraint.getPictureFFCSizeWhitelist();
+                }
+                else {
+                  sizes=constraint.getPictureRFCSizeWhitelist();
+                }
+              }
+
+              if (sizes==null) {
+                sizes=new ArrayList<>();
+
+                for (android.util.Size size : map.getOutputSizes(ImageFormat.JPEG)) {
+                  sizes.add(new Size(size.getWidth(), size.getHeight()));
+                }
+              }
+
+              camera.setPictureSizes(sizes);
               result.add(camera);
             }
 
@@ -712,8 +746,8 @@ public class CameraTwoEngine extends CameraEngine {
   static class Descriptor implements CameraDescriptor {
     private final String cameraId;
     private CameraDevice device;
-    private ArrayList<Size> pictureSizes;
-    private ArrayList<Size> previewSizes;
+    private List<Size> pictureSizes;
+    private List<Size> previewSizes;
     private boolean isFacingFront;
     private final Integer facing;
 
@@ -740,25 +774,21 @@ public class CameraTwoEngine extends CameraEngine {
     }
 
     @Override
-    public ArrayList<Size> getPreviewSizes() {
+    public List<Size> getPreviewSizes() {
       return(previewSizes);
     }
 
-    private void setPreviewSizes(ArrayList<Size> sizes) {
+    private void setPreviewSizes(List<Size> sizes) {
       previewSizes=sizes;
     }
 
     @Override
-    public ArrayList<Size> getPictureSizes() {
+    public List<Size> getPictureSizes() {
       return(pictureSizes);
     }
 
-    private void setPictureSizes(List<android.util.Size> sizes) {
-      pictureSizes=new ArrayList<Size>(sizes.size());
-
-      for (android.util.Size size : sizes) {
-        pictureSizes.add(new Size(size.getWidth(), size.getHeight()));
-      }
+    private void setPictureSizes(List<Size> sizes) {
+      pictureSizes=sizes;
     }
 
     private void setFacingFront(boolean isFacingFront) {
