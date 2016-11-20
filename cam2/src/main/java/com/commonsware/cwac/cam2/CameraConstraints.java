@@ -95,6 +95,11 @@ public class CameraConstraints {
       .build());
     add(new Builder()
       .manufacturer("samsung")
+      .product("m0xx")
+      .highCamcorderProfile(CamcorderProfile.QUALITY_QCIF)
+      .build());
+    add(new Builder()
+      .manufacturer("samsung")
       .product("sf2wifixx")
       .cameraDisplayOrientation(0)
       .build());
@@ -112,6 +117,11 @@ public class CameraConstraints {
       .manufacturer("Sony")
       .product("D5803")
       .disableFocusMode(true)
+      .build());
+    add(new Builder()
+      .manufacturer("Wileyfox")
+      .product("Swift")
+      .supportsCameraTwo(false)
       .build());
 
     CameraConstraints match=null;
