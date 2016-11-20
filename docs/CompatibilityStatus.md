@@ -3,11 +3,21 @@
 ## Version 0.7.x
 | Device                         | Identifier                  | Version | Issues |
 | ------------------------------ |:---------------------------:|:-------:|--------|
-| Google Nexus 5X                | `LGE`/`bullhead`            | 7.0     | [265](https://github.com/commonsguy/cwac-cam2/issues/265) |
+| Google Galaxy Nexus            | `samsung`/`yakju`           | 4.3     | |
+| Google Nexus 4                 | `LGE`/`occam`               | 5.1.1   | [271](https://github.com/commonsguy/cwac-cam2/issues/271) |
+| Google Nexus 5                 | `LGE`/`hammerhead`          | 6.0.1   | |
+| Google Nexus 5X                | `LGE`/`bullhead`            | 7.0     | |
+| Google Nexus 6                 | `motorola`/`shamu`          | 7.0     | [273](https://github.com/commonsguy/cwac-cam2/issues/273) |
 | Google Nexus 6P                | `Huawei`/`angler`           | 7.0     | |
+| Google Nexus 9                 | `htc`/`volantis`            | 7.0     | |
 | Google Nexus S                 | `samsung`/`soju`            | 4.1.2   | |
-| Google Pixel                   | `Google`/`sailfish`         | 7.1     | [265](https://github.com/commonsguy/cwac-cam2/issues/265) |
-
+| Google Pixel                   | `Google`/`sailfish`         | 7.1     | |
+| Google Pixel C                 | `google`/`ryu`              | 7.0     | |
+| Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
+| Samsung Galaxy Grand GT-I9080L | `samsung`/`baffinssvj`      | 4.2.2   | [271](https://github.com/commonsguy/cwac-cam2/issues/271) |
+| Samsung Galaxy Note 3 SM-N900  | `samsung`/`ha3gub`          | 5.0   | |
+| Samsung Galaxy S III           | `samsung`/`m0xx`            | 4.3     | [272](https://github.com/commonsguy/cwac-cam2/issues/272) |
+| Wileyfox Swift                 | `Wileyfox`/`Swift`          | 6.0.1 (CM 12.1) | |
 
 ## Version 0.6.x
 | Device                         | Identifier                  | Version | Issues |
