@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.7.0'
+    compile 'com.commonsware.cwac:cam2:0.7.1'
 }
 ```
 
@@ -131,7 +131,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.7.0 of this library, which means it is coming
+This is version v0.7.1 of this library, which means it is coming
 along slowly.
 
 Demo
@@ -188,6 +188,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.7.1: fixed [Camera2 crash](https://github.com/commonsguy/cwac-cam2/issues/278) and [two](https://github.com/commonsguy/cwac-cam2/issues/33) old device [bugs](https://github.com/commonsguy/cwac-cam2/issues/32)
 - v0.7.0
     - [Made runtime permission request opt-in](https://github.com/commonsguy/cwac-cam2/issues/233)
     - Upgraded to greenrobot EventBus 3.0.0
