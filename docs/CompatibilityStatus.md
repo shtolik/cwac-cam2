@@ -3,20 +3,30 @@
 ## Version 0.7.x
 | Device                         | Identifier                  | Version | Issues |
 | ------------------------------ |:---------------------------:|:-------:|--------|
+| Amazon Kindle Fire HD 6        | `Amazon`/`full_ariel`       | 5.1.1   | |
+| Amazon Fire (7")               | `Amazon`/`full_ford`        | 5.1.1   | [274](https://github.com/commonsguy/cwac-cam2/issues/274) |
+| Amazon Fire Phone              | `Amazon`/`juniper`          | 4.4.4   | |
+| ASUS ZenFone Zoom ZX550 (ZX551ML) | `asus`/`WW_Z00X`         | 5.0     | [272](https://github.com/commonsguy/cwac-cam2/issues/272) | 
 | Google Galaxy Nexus            | `samsung`/`yakju`           | 4.3     | |
 | Google Nexus 4                 | `LGE`/`occam`               | 5.1.1   | [271](https://github.com/commonsguy/cwac-cam2/issues/271) |
 | Google Nexus 5                 | `LGE`/`hammerhead`          | 6.0.1   | |
 | Google Nexus 5X                | `LGE`/`bullhead`            | 7.0     | |
 | Google Nexus 6                 | `motorola`/`shamu`          | 7.0     | [273](https://github.com/commonsguy/cwac-cam2/issues/273) |
 | Google Nexus 6P                | `Huawei`/`angler`           | 7.0     | |
+| Google Nexus 7 (2013)          | `asus`/`razor`              | 6.0.1   | [272](https://github.com/commonsguy/cwac-cam2/issues/272) |
 | Google Nexus 9                 | `htc`/`volantis`            | 7.0     | |
+| Google Nexus 10                | `samsung`/`mantaray`        | 5.1.1   | |
 | Google Nexus S                 | `samsung`/`soju`            | 4.1.2   | |
 | Google Pixel                   | `Google`/`sailfish`         | 7.1     | |
 | Google Pixel C                 | `google`/`ryu`              | 7.0     | |
+| HTC Incredible HD              | `HTC`/`htc_mecha`           | 4.0.4   | [281](https://github.com/commonsguy/cwac-cam2/issues/281) |
+| HTC One A9                     | `HTC`/`hiaeuhl_00709`       | 6.0.1   | |
+| HTC One M7 GPE                 | `HTC`/`m7_google`           | 5.1     | |
 | Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
 | Samsung Galaxy Grand GT-I9080L | `samsung`/`baffinssvj`      | 4.2.2   | [271](https://github.com/commonsguy/cwac-cam2/issues/271) |
 | Samsung Galaxy Note 3 SM-N900  | `samsung`/`ha3gub`          | 5.0   | |
 | Samsung Galaxy S III           | `samsung`/`m0xx`            | 4.3     | [272](https://github.com/commonsguy/cwac-cam2/issues/272) |
+| Samsung Galaxy Tab S (SM-800)  | `samsung`/`chagallwifixx`   | 6.0.1   | |
 | Wileyfox Swift                 | `Wileyfox`/`Swift`          | 6.0.1 (CM 12.1) | |
 
 ## Version 0.6.x

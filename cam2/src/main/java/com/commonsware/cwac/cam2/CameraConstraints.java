@@ -41,9 +41,25 @@ public class CameraConstraints {
 
   static {
     add(new Builder()
+      .manufacturer("Amazon")
+      .product("full_ford")
+      .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
+      .manufacturer("asus")
+      .product("razor")
+      .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
       .manufacturer("htc")
       .product("volantis")
       .disableFocusMode(true)
+      .build());
+    add(new Builder()
+      .manufacturer("HTC")
+      .product("htc_mecha")
+      .supportsFFC(false)
+      .highCamcorderProfile(CamcorderProfile.QUALITY_LOW)
       .build());
     add(new Builder()
       .manufacturer("htc")
@@ -81,6 +97,11 @@ public class CameraConstraints {
     add(new Builder()
       .manufacturer("NVIDIA")
       .product("sb_na_wf")
+      .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
+      .manufacturer("samsung")
+      .product("chagallwifixx")
       .supportsCameraTwo(false)
       .build());
     add(new Builder()
