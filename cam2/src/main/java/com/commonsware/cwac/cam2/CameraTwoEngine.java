@@ -711,9 +711,15 @@ public class CameraTwoEngine extends CameraEngine {
               CameraMetadata.CONTROL_AF_TRIGGER_CANCEL);
           s.previewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE,
               CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
-          s.captureSession.capture(s.previewRequestBuilder.build(), null,
+
+          CameraCaptureSession session=s.captureSession;
+
+          if (session!=null) {
+            session.capture(s.previewRequestBuilder.build(), null,
               handler);
-          s.captureSession.setRepeatingRequest(s.previewRequest, null, handler);
+            session.setRepeatingRequest(s.previewRequest, null,
+              handler);
+          }
         }
       }
       catch (CameraAccessException e) {
