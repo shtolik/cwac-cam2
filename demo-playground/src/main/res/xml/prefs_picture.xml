@@ -16,6 +16,11 @@
     android:dependency="file"
     android:title="@string/title_update_media_store"/>
   <SwitchPreference
+    android:key="useProvider"
+    android:dependency="file"
+    android:defaultValue="false"
+    android:title="@string/title_provider"/>
+  <SwitchPreference
     android:key="confirm"
     android:title="@string/title_confirm"/>
   <SwitchPreference
