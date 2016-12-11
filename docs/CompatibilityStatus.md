@@ -22,11 +22,38 @@
 | HTC Incredible HD              | `HTC`/`htc_mecha`           | 4.0.4   | [281](https://github.com/commonsguy/cwac-cam2/issues/281) |
 | HTC One A9                     | `HTC`/`hiaeuhl_00709`       | 6.0.1   | |
 | HTC One M7 GPE                 | `HTC`/`m7_google`           | 5.1     | |
+| Huawei Honor 5X                | `HUAWEI`/`KIW-L24`          | 6.0.1   | |
+| LG G2                          | `LGE`/`g2_open_com`         | 4.4.2   | |
+| LG G3                          | `LGE`/`g3_tmo_us`           | 6.0     | |
+| LG V10 H901                    | `LGE`/`pplus_tmo_us`        | 6.0     | |
 | Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
+| Motorola Moto E2               | `motorola`/`surnia_retca`   | 6.0     | [286](https://github.com/commonsguy/cwac-cam2/issues/286) |
+| NVIDIA Shield K1               | `NVIDIA`/`sb_na_wf`         | 6.0.1   | |
+| OnePlus X (E1005)              | `OnePlus`/`MODEL`=`ONE E1005` | 6.0.1 | |
+| Samsung Galaxy Ace 3           | `samsung`/`loganub`         | 4.2.2   | |
+| Samsung Galaxy Camera EK-GC110 | `samsung`/`gd1wifiue`       | 4.1.2   | |
+| Samsung Galaxy Camera EK-GC200 | `samsung`/`sf2wifixx`       | 4.3     | |
 | Samsung Galaxy Grand GT-I9080L | `samsung`/`baffinssvj`      | 4.2.2   | [271](https://github.com/commonsguy/cwac-cam2/issues/271) |
-| Samsung Galaxy Note 3 SM-N900  | `samsung`/`ha3gub`          | 5.0   | |
+| Samsung Galaxy Note 2 GT-N7100 | `samsung`/`t03gxx`          | 4.1.2   | [272](https://github.com/commonsguy/cwac-cam2/issues/272) |
+| Samsung Galaxy Note 3 SM-N900  | `samsung`/`ha3gub`          | 5.0     | |
+| Samsung Galaxy Pocket Neo      | `samsung`/`corsicadd`       | 4.1.2   | |
+| Samsung Galaxy S III           | `samsung`/`d2lterefreshspr` | 4.4.2   | |
+| Samsung Galaxy S III           | `samsung`/`d2tmo`           | 4.3     | |
+| Samsung Galaxy S III           | `samsung`/`d2uc`            | 4.4.2   | |
 | Samsung Galaxy S III           | `samsung`/`m0xx`            | 4.3     | [272](https://github.com/commonsguy/cwac-cam2/issues/272) |
+| Samsung Galaxy S4              | `samsung`/`ja3gxx`          | 5.0.1   | |
+| Samsung Galaxy S4              | `samsung`/`jfltespr`        | 5.0.1   | |
+| Samsung Galaxy S4              | `samsung`/`jflteuc`         | 4.2.2   | |
+| Samsung Galaxy S4 Mini         | `samsung`/`serranoltexx`    | 4.4.2   | |
+| Samsung Galaxy S4 Zoom         | `samsung`/`mprojectlteuc`   | 4.2.2   | |
+| Samsung Galaxy S5              | `samsung`/`k3gxx`           | 6.0.1   | |
+| Samsung Galaxy S5              | `samsung`/`kltezt`          | 6.0.1   | |
+| Samsung Galaxy S6 (G920F)      | `samsung`/`zerofltexx`      | 6.0.1   | |
+| Samsung Galaxy S7 (G930FD)     | `samsung`/`heroltexx`       | 6.0.1   | |
 | Samsung Galaxy Tab S (SM-800)  | `samsung`/`chagallwifixx`   | 6.0.1   | |
+| SONY Xperia E4 Dual (E2115)    | `Sony`/`E2115`              | 4.4.4   | |
+| SONY Xperia Z (C6603)          | `Sony`/`C6603`              | 5.1.1   | |
+| SONY Xperia Z Ultra (C6802)    | `Sony`/`C6802`              | 5.1.1   | |
 | Wileyfox Swift                 | `Wileyfox`/`Swift`          | 6.0.1 (CM 12.1) | |
 
 ## Version 0.6.x

@@ -44,6 +44,7 @@ public class CameraConstraints {
       .manufacturer("Amazon")
       .product("full_ford")
       .supportsCameraTwo(false)
+      .highCamcorderProfile(CamcorderProfile.QUALITY_1080P)
       .build());
     add(new Builder()
       .manufacturer("asus")
@@ -77,17 +78,15 @@ public class CameraConstraints {
       .product("hammerhead")
       .supportsCameraTwo(false)
       .build());
-/*
     add(new Builder()
       .manufacturer("LGE")
       .product("bullhead")
       .supportsCameraTwo(false)
       .build());
-*/
     add(new Builder()
       .manufacturer("LGE")
       .product("g3_tmo_us")
-      .highCamcorderProfile(CamcorderProfile.QUALITY_480P)
+      .highCamcorderProfile(CamcorderProfile.QUALITY_720P)
       .build());
     add(new Builder()
       .manufacturer("LGE")
@@ -95,9 +94,36 @@ public class CameraConstraints {
       .supportsCameraTwo(false)
       .build());
     add(new Builder()
+      .manufacturer("LGE")
+      .product("p1_usc_us")
+      .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
+      .manufacturer("LGE")
+      .product("pplus_tmo_us")
+      .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
+      .manufacturer("motorola")
+      .product("surnia_retca")
+      .supportsCameraTwo(false)
+      .previewRFCSizeWhitelist(new Size(1280,720))
+      .build());
+    add(new Builder()
       .manufacturer("NVIDIA")
       .product("sb_na_wf")
       .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
+      .manufacturer("OnePlus")
+      .model("ONE E1005")
+      .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
+      .manufacturer("samsung")
+      .product("baffinssvj")
+      .previewRFCSizeWhitelist(new Size(1280,720))
+      .previewFFCSizeWhitelist(new Size(720,480))
       .build());
     add(new Builder()
       .manufacturer("samsung")
@@ -121,13 +147,26 @@ public class CameraConstraints {
       .build());
     add(new Builder()
       .manufacturer("samsung")
+      .product("serranoltexx")
+      .previewRFCSizeWhitelist(new Size(960, 720))
+      .supportsFFC(false)
+      .highCamcorderProfile(CamcorderProfile.QUALITY_480P)
+      .build());
+    add(new Builder()
+      .manufacturer("samsung")
       .product("sf2wifixx")
       .cameraDisplayOrientation(0)
+      .build());
+    add(new Builder()
+      .manufacturer("samsung")
+      .product("zerofltexx")
+      .supportsCameraTwo(false)
       .build());
     add(new Builder()
       .manufacturer("Sony")
       .product("C6603")
       .disableFocusMode(true)
+      .highCamcorderProfile(CamcorderProfile.QUALITY_480P)
       .build());
     add(new Builder()
       .manufacturer("Sony")
@@ -138,6 +177,12 @@ public class CameraConstraints {
       .manufacturer("Sony")
       .product("D5803")
       .disableFocusMode(true)
+      .highCamcorderProfile(CamcorderProfile.QUALITY_480P)
+      .build());
+    add(new Builder()
+      .manufacturer("Sony")
+      .product("E2115")
+      .highCamcorderProfile(CamcorderProfile.QUALITY_480P)
       .build());
     add(new Builder()
       .manufacturer("Wileyfox")
