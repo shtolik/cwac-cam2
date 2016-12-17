@@ -52,6 +52,11 @@ public class CameraConstraints {
       .supportsCameraTwo(false)
       .build());
     add(new Builder()
+      .manufacturer("asus")
+      .product("US_epad")
+      .highCamcorderProfile(CamcorderProfile.QUALITY_480P)
+      .build());
+    add(new Builder()
       .manufacturer("htc")
       .product("volantis")
       .disableFocusMode(true)
@@ -92,6 +97,7 @@ public class CameraConstraints {
       .manufacturer("LGE")
       .product("palman")
       .supportsCameraTwo(false)
+      .previewFFCSizeWhitelist(new Size(1280,720))
       .build());
     add(new Builder()
       .manufacturer("LGE")
@@ -161,6 +167,11 @@ public class CameraConstraints {
       .manufacturer("samsung")
       .product("zerofltexx")
       .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
+      .manufacturer("Sony")
+      .product("C1505")
+      .highCamcorderProfile(CamcorderProfile.QUALITY_QCIF)
       .build());
     add(new Builder()
       .manufacturer("Sony")
