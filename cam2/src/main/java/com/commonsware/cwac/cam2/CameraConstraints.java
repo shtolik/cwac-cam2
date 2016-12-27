@@ -80,11 +80,6 @@ public class CameraConstraints {
       .build());
     add(new Builder()
       .manufacturer("LGE")
-      .product("hammerhead")
-      .supportsCameraTwo(false)
-      .build());
-    add(new Builder()
-      .manufacturer("LGE")
       .product("bullhead")
       .supportsCameraTwo(false)
       .build());
@@ -95,9 +90,19 @@ public class CameraConstraints {
       .build());
     add(new Builder()
       .manufacturer("LGE")
+      .product("hammerhead")
+      .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
+      .manufacturer("LGE")
       .product("palman")
       .supportsCameraTwo(false)
       .previewFFCSizeWhitelist(new Size(1280,720))
+      .build());
+    add(new Builder()
+      .manufacturer("LGE")
+      .product("p1_global_com")
+      .supportsCameraTwo(false)
       .build());
     add(new Builder()
       .manufacturer("LGE")
