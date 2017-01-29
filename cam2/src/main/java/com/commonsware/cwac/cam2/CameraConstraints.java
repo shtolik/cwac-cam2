@@ -272,6 +272,10 @@ public class CameraConstraints {
   }
 
   public boolean supportsCameraTwo() {
+    if (Build.MANUFACTURER.equals("LGE")) {
+      return(false);
+    }
+
     return(supportsCameraTwo);
   }
 
