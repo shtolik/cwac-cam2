@@ -4,15 +4,18 @@
 | Device                         | Identifier                  | Version | Issues |
 | ------------------------------ |:---------------------------:|:-------:|--------|
 | Amazon Kindle Fire HD 6        | `Amazon`/`full_ariel`       | 5.1.1   | |
+| Amazon Kindle Fire HDX 8.9     | `Amazon`/`apollo`           | 4.4.2   | |
 | Amazon Fire (7")               | `Amazon`/`full_ford`        | 5.1.1   | [274](https://github.com/commonsguy/cwac-cam2/issues/274) |
+| Amazon Fire HD 10              | `Amazon`/`full_thebes`      | 5.1     | |
 | Amazon Fire Phone              | `Amazon`/`juniper`          | 4.4.4   | |
+| ASUS MeMO Pad FHD 10 (ME302C)  | `asus`/`US_epad`            | 4.3     | |
 | ASUS ZenFone Zoom ZX550 (ZX551ML) | `asus`/`WW_Z00X`         | 5.0     | [272](https://github.com/commonsguy/cwac-cam2/issues/272) | 
 | Google Galaxy Nexus            | `samsung`/`yakju`           | 4.3     | |
 | Google Nexus 4                 | `LGE`/`occam`               | 5.1.1   | [271](https://github.com/commonsguy/cwac-cam2/issues/271) |
 | Google Nexus 5                 | `LGE`/`hammerhead`          | 6.0.1   | |
 | Google Nexus 5X                | `LGE`/`bullhead`            | 7.0     | |
 | Google Nexus 6                 | `motorola`/`shamu`          | 7.0     | [273](https://github.com/commonsguy/cwac-cam2/issues/273) |
-| Google Nexus 6P                | `Huawei`/`angler`           | 7.0     | |
+| Google Nexus 6P                | `Huawei`/`angler`           | 7.1.1   | |
 | Google Nexus 7 (2013)          | `asus`/`razor`              | 6.0.1   | [272](https://github.com/commonsguy/cwac-cam2/issues/272) |
 | Google Nexus 9                 | `htc`/`volantis`            | 7.0     | |
 | Google Nexus 10                | `samsung`/`mantaray`        | 5.1.1   | |
@@ -23,8 +26,10 @@
 | HTC One A9                     | `HTC`/`hiaeuhl_00709`       | 6.0.1   | |
 | HTC One M7 GPE                 | `HTC`/`m7_google`           | 5.1     | |
 | Huawei Honor 5X                | `HUAWEI`/`KIW-L24`          | 6.0.1   | |
+| LG G-Pad                       | `LGE`/`palman`              | 5.1     | |
 | LG G2                          | `LGE`/`g2_open_com`         | 4.4.2   | |
 | LG G3                          | `LGE`/`g3_tmo_us`           | 6.0     | |
+| LG G4                          | `LGE`/`g3_global_com`       | 5.1     | |
 | LG V10 H901                    | `LGE`/`pplus_tmo_us`        | 6.0     | |
 | Motorola Moto E XT1022         | `motorola`/`condor_retla_ds`| 4.4.4   | |
 | Motorola Moto E2               | `motorola`/`surnia_retca`   | 6.0     | [286](https://github.com/commonsguy/cwac-cam2/issues/286) |
@@ -51,9 +56,11 @@
 | Samsung Galaxy S6 (G920F)      | `samsung`/`zerofltexx`      | 6.0.1   | |
 | Samsung Galaxy S7 (G930FD)     | `samsung`/`heroltexx`       | 6.0.1   | |
 | Samsung Galaxy Tab S (SM-800)  | `samsung`/`chagallwifixx`   | 6.0.1   | |
+| SONY Xperia E (C1505)          | `Sony`/`C1505`              | 4.1.1   | |
 | SONY Xperia E4 Dual (E2115)    | `Sony`/`E2115`              | 4.4.4   | |
 | SONY Xperia Z (C6603)          | `Sony`/`C6603`              | 5.1.1   | |
 | SONY Xperia Z Ultra (C6802)    | `Sony`/`C6802`              | 5.1.1   | |
+| Tesco (Pegatron) hudl 2        | `Pegatron`/`HTF8A4XX`       | 5.1     | [294](https://github.com/commonsguy/cwac-cam2/issues/294) |
 | Wileyfox Swift                 | `Wileyfox`/`Swift`          | 6.0.1 (CM 12.1) | |
 
 ## Version 0.6.x
