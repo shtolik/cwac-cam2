@@ -41,6 +41,10 @@ public class CameraConstraints {
 
   static {
     add(new Builder()
+      .product("sdk_phone_x86")
+      .supportsCameraTwo(false)
+      .build());
+    add(new Builder()
       .manufacturer("Amazon")
       .product("full_ford")
       .supportsCameraTwo(false)
