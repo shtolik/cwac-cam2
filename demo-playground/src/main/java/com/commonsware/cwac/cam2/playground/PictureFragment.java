@@ -228,6 +228,12 @@ public class PictureFragment extends PreferenceFragment {
         break;
     }
 
+    int rawTimer=Integer.valueOf(prefs.getString("timer", "0"));
+
+    if (rawTimer>0) {
+      b.timer(rawTimer);
+    }
+
     String confirmationQuality=prefs.getString("confirmationQuality", null);
 
     if (confirmationQuality!=null &&

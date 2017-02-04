@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.commonsware.cwac:cam2:0.7.3'
+    compile 'com.commonsware.cwac:cam2:0.7.4'
 }
 ```
 
@@ -131,7 +131,7 @@ use of it, from being obfuscated.
 
 Version
 -------
-This is version v0.7.3 of this library, which means it is coming
+This is version v0.7.4 of this library, which means it is coming
 along slowly.
 
 Demo
@@ -188,6 +188,7 @@ Do not ask for help via social media.
 
 Release Notes
 -------------
+- v0.7.4: [added timer option](https://github.com/commonsguy/cwac-cam2/issues/297) for taking pictures 
 - v0.7.3: fixed issues surrounding LG devices ([#295](https://github.com/commonsguy/cwac-cam2/issues/295), [#299](https://github.com/commonsguy/cwac-cam2/issues/299)) and 6.0 emulator ([#293](https://github.com/commonsguy/cwac-cam2/issues/293))
 - v0.7.2: [added `FileProvider` to `demo-playground`](https://github.com/commonsguy/cwac-cam2/issues/284), fixed compatibility issues ([#271](https://github.com/commonsguy/cwac-cam2/issues/271), [#274](https://github.com/commonsguy/cwac-cam2/issues/274), [#286](https://github.com/commonsguy/cwac-cam2/issues/286))
 - v0.7.1: fixed [Camera2 crash](https://github.com/commonsguy/cwac-cam2/issues/278) and [two](https://github.com/commonsguy/cwac-cam2/issues/33) old device [bugs](https://github.com/commonsguy/cwac-cam2/issues/32)
