@@ -390,7 +390,10 @@ public class CameraController implements CameraView.StateCallback {
             .getConfiguration().orientation==
             Configuration.ORIENTATION_PORTRAIT;
         Size virtualPreviewSize=session.getPreviewSize();
-
+        /*
+         * Size will always be like this: 4032x3024, 2688x1512 or 800x600, so in portrait mode,
+         * it is mandatory to swap these values or preview will stretch
+         */
         if (shouldSwapPreviewDimensions) {
           virtualPreviewSize=
             new Size(session.getPreviewSize().getHeight(),
