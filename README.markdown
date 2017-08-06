@@ -123,11 +123,7 @@ It is recommended that you not obfuscate the classes in CWAC libraries:
 -keep class com.commonsware.cwac.** { *; }
 ```
 
-If you feel that obfuscating open source code makes sense,
-at minimum you will need to employ
-[appropriate rules](https://github.com/krschultz/android-proguard-snippets/blob/master/libraries/proguard-eventbus.pro)
-to prevent greenrobot's EventBus code, and this library's
-use of it, from being obfuscated.
+You should also not obfuscate the greenrobot EventBus classes; [here is a sample set of rules](https://github.com/krschultz/android-proguard-snippets/blob/master/libraries/proguard-eventbus-3.pro).
 
 Version
 -------
