@@ -181,8 +181,10 @@ public class CameraTwoEngine extends CameraEngine {
           if ((!criteria.getFacingExactMatch() ||
             camera.getScore(criteria)>0) &&
             !criteria.isVideo() ||
-            (camera.isFacingFront && CameraConstraints.get().supportsFFCVideo()) ||
-            (!camera.isFacingFront && CameraConstraints.get().supportsRFCVideo())) {
+            (camera.isFacingFront && CameraConstraints.get()!=null
+                    && CameraConstraints.get().supportsFFCVideo()) ||
+            (!camera.isFacingFront && CameraConstraints.get()!=null
+                    && CameraConstraints.get().supportsRFCVideo())) {
             result.add(camera);
           }
         }

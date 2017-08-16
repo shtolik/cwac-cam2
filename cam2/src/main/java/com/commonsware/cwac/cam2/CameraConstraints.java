@@ -242,7 +242,13 @@ public class CameraConstraints {
       }
     }
 
-    DEVICE_CONSTRAINT=match;
+	  if (match == null){
+		  DEVICE_CONSTRAINT = new Builder()
+				  .manufacturer("Unknown")
+				  .build();
+	  }else {
+		  DEVICE_CONSTRAINT = match;
+	  }
   }
 
   public static void add(CameraConstraints matcher) {

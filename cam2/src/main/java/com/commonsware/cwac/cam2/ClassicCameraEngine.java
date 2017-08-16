@@ -157,8 +157,10 @@ public class ClassicCameraEngine extends CameraEngine
               descriptor.getScore(criteria)>0) &&
               !criteria.isVideo() ||
               (descriptor.facing==Camera.CameraInfo.CAMERA_FACING_FRONT &&
-              CameraConstraints.get().supportsFFCVideo()) ||
+            CameraConstraints.get()!=null &&
+            CameraConstraints.get().supportsFFCVideo()) ||
               (descriptor.facing!=Camera.CameraInfo.CAMERA_FACING_FRONT &&
+            CameraConstraints.get()!=null &&
                 CameraConstraints.get().supportsRFCVideo())) {
               result.add(descriptor);
             }
